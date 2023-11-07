@@ -8,8 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@jaknaweby</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1 class="underline">Test heading</h1>
+
     <form method="post">
         <label for="username">Username</label>
         <input type="text" name="username" placeholder="Enter a username" required><br>
