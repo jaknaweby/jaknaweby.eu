@@ -1,105 +1,97 @@
-<?php
-    session_start();
-
-    function writeMessage(string $someMessage) {
-        $message = $someMessage;
-        include("phpComponents/message.php");
-    }
-?>
-
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@jaknaweby</title>
-        <link rel="stylesheet" href="tailwind/style.css">
-    </head>
-    <body>
-        <form method="post" class="flex flex-col items-center">
-            <div class="flex flex-col">
-                <label class="text-lg" for="username">Username</label>
-                <input class="border-2 rounded text-lg pl-1" type="text" name="username" placeholder="Enter a username" required>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@jaknaweby</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="icon" type="image/x-icon" href="img/jaknaweby_logo.png">
+</head>
+<body class="scrollbar">
+    <header
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), linear-gradient(rgba(0, 48, 75, 0.5), rgba(76, 0, 5, 0.5)), url('img/code_background.png');"
+    class="w-full h-screen bg-cover bg-fixed text-white relative    px-10 sm:px-14 md:px-20 lg:px-24 xl:px-28 2xl:px-32">
+        <nav class="flex justify-between items-center relative   pt-10 sm:pt-12 md:pt-14 lg:pt-16 xl:pt-20 2xl:pt-24">
+            <a href="#"><img src="./img/jaknaweby_logo.png" class="w-24" alt="@jaknaweby logo"></a>
+            <ul id="links" class="font-extralight text-xl hidden justify-between flex-col bg-stone-950 sm:flex-row sm:w-1/2 sm:bg-transparent">
+                <li class="pl-10 py-7 border-t sm:p-0 sm:border-0"><a href="#socials">Sociální sítě</a></li>
+                <li class="pl-10 py-7 border-y sm:p-0 sm:border-0"><a href="#">Mám zájem o web</a></li>
+                <li class="pl-10 py-7 border-b sm:p-0 sm:border-0"><a href="#">Tutorialy</a></li>
+            </ul>
+            <img src="./img/hamburger.png" class="sm:hidden w-16" id="hamburger" alt="">
+        </nav>
+
+        <h1 class="text-4xl font-bold absolute bottom-1/3 leading-tight">Naučte se tvořit weby<br>zábavně a jednoduše</h1>
+    </header>
+
+    <main class="px-10 sm:px-14 md:px-20 lg:px-24 xl:px-28 2xl:px-32">
+        <h2 class="text-4xl mx-auto mt-36">Kdo jsme a co děláme</h2>
+        <div class="flex items-center justify-between mt-24">
+            <p class="sm:w-2/3 text-xl font-extralight">Jsme dva kluci, které baví tvorba webů a pomáhání lidem. Projekt @jaknaweby vznikl za účelem vytvořit komunitu CZ/SK web developerů, kteří si navzájem pomohou efektivně se učit a řešit errory a bugy.</p>
+            <img class="w-1/5 hidden sm:inline-block" src="./img/jaknaweby_logo.png" alt="@jaknaweby logo">
+        </div>
+
+        <h2 class="text-4xl mx-auto mt-36" id="socials">Naše sociální sítě</h2>
+        <div class="flex flex-row-reverse items-center justify-between mt-28">
+            <div class="flex flex-col justify-center w-full sm:w-2/3 font-extralight text-xl">
+                <h3 class="text-3xl font-light">Instagram</h3>
+                <p class="my-6">Jsme dva kluci, které baví tvorba webů a pomáhání lidem. Projekt @jaknaweby vznikl za účelem vytvořit komunitu CZ/SK web developerů, kteří si navzájem pomohou efektivně se učit a řešit errory a bugy.</p>
+                <div class="flex">
+                    <a href="#" class="bg-slate-200 px-8 py-2.5 rounded-md mr-2.5">Více informací</a>
+                    <a href="https://www.instagram.com/jaknaweby" class="bg-slate-200 px-8 py-2.5 rounded-md">Odkaz na síť</a>
+                </div>
             </div>
+            <img class="w-1/5 h-fit hidden sm:inline-block" src="./img/instagram_logo.png" alt="instagram logo">
+        </div>
 
-            <div class="flex flex-col mt-3">
-                <label class="text-lg" for="password">Password</label>
-                <input class="border-2 rounded text-lg pl-1" type="password" name="password" placeholder="Enter a password" required>
+        <div class="flex items-center justify-between mt-28">
+            <div class="flex flex-col justify-center w-full sm:w-7/12 font-extralight text-xl">
+                <h3 class="text-3xl font-light">Discord server</h3>
+                <p class="my-6">Jsme dva kluci, které baví tvorba webů a pomáhání lidem. Projekt @jaknaweby vznikl za účelem vytvořit komunitu CZ/SK web developerů, kteří si navzájem pomohou efektivně se učit a řešit errory a bugy.</p>
+                <div class="flex">
+                    <a href="#" class="bg-slate-200 px-8 py-2.5 rounded-md mr-2.5">Více informací</a>
+                    <a href="https://dsc.gg/jaknaweby" class="bg-slate-200 px-8 py-2.5 rounded-md">Odkaz na síť</a>
+                </div>
             </div>
+            <img class="w-1/5 h-fit hidden sm:inline-block" src="./img/discord_logo.png" alt="discord logo">
+        </div>
 
-            <input class="bg-zinc-300 px-7 py-1 rounded text-lg mt-5" type="submit" name="login" value="Log in">
-        </form>
-
-        <form method="post" class="flex flex-col items-center mt-10">
-            <div class="flex flex-col">
-                <label class="text-lg" for="username">Username</label>
-                <input class="border-2 rounded text-lg pl-1" type="text" name="username" placeholder="Enter a username" required>
+        <div class="flex flex-row-reverse items-center justify-between mt-28">
+            <div class="flex flex-col justify-center w-full sm:w-7/12 font-extralight text-xl">
+                <h3 class="text-3xl font-light">YouTube</h3>
+                <p class="my-6">Jsme dva kluci, které baví tvorba webů a pomáhání lidem. Projekt @jaknaweby vznikl za účelem vytvořit komunitu CZ/SK web developerů, kteří si navzájem pomohou efektivně se učit a řešit errory a bugy.</p>
+                <div class="flex">
+                    <a href="#" class="bg-slate-200 px-8 py-2.5 rounded-md mr-2.5">Více informací</a>
+                    <a href="https://www.youtube.com/jaknaweby" class="bg-slate-200 px-8 py-2.5 rounded-md">Odkaz na síť</a>
+                </div>
             </div>
+            <img class="w-1/5 h-fit hidden sm:inline-block" src="./img/youtube_logo.png" alt="youtube logo">
+        </div>
 
-            <div class="flex flex-col mt-3">
-                <label class="text-lg" for="password">Password</label>
-                <input class="border-2 rounded text-lg pl-1" type="password" name="password" placeholder="Enter a password" required>
+        <div class="flex items-center justify-between mt-28">
+            <div class="flex flex-col justify-center w-full sm:w-7/12 font-extralight text-xl">
+                <h3 class="text-3xl font-light">TikTok</h3>
+                <p class="my-6">Jsme dva kluci, které baví tvorba webů a pomáhání lidem. Projekt @jaknaweby vznikl za účelem vytvořit komunitu CZ/SK web developerů, kteří si navzájem pomohou efektivně se učit a řešit errory a bugy.</p>
+                <div class="flex">
+                    <a href="#" class="bg-slate-200 px-8 py-2.5 rounded-md mr-2.5">Více informací</a>
+                    <a href="https://tiktok.com/@jaknaweby" class="bg-slate-200 px-8 py-2.5 rounded-md">Odkaz na síť</a>
+                </div>
             </div>
+            <img class="w-1/5 h-fit hidden sm:inline-block" src="./img/tiktok_logo.png" alt="tiktok logo">
+        </div>
+    </main>
 
-            <input class="bg-zinc-300 px-7 py-1 rounded text-lg mt-5" type="submit" name="register" value="Register">
-        </form>
-    </body>
+    <footer class="text-white bg-stone-950 py-16 mt-36 px-10 sm:px-14 md:px-20 lg:px-24 xl:px-28 2xl:px-32">
+        <ul class="flex justify-center mx-auto mb-7">
+            <li class="w-16 mr-3"><a href="https://www.instagram.com/jaknaweby/"><img src="./img/instagram_logo.png" alt="instagram logo"></a></li>
+            <li class="w-16 mr-3"><a href="https://dsc.gg/jaknaweby"><img src="./img/discord_logo.png" alt="discord logo"></a></li>
+            <li class="w-16 mr-3"><a href="https://www.youtube.com/jaknaweby"><img src="./img/youtube_logo.png" alt="youtube logo"></a></li>
+            <li class="w-16"><a href="https://tiktok.com/@jaknaweby"><img src="./img/tiktok_logo.png" alt="tiktok logo"></a></li>
+        </ul>
+        <p class="font-extralight text-center text-xl">© 2023 @jaknaweby</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
-
-<?php
-    $conn = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
-
-    // Checks, whether the database is up
-    if (!empty($conn)) {
-        if (isset($_POST["login"])) {
-            // Sets the result of SQL query into the $isValid variable
-            $isValid = mysqli_query($conn, "SELECT * FROM users WHERE username = '{$_POST["username"]}'");
-
-            if (mysqli_num_rows($isValid) > 0) { // If the username was found
-                $isValidFetch = mysqli_fetch_assoc($isValid);
-
-                if (password_verify($_POST["password"] . $isValidFetch["salt"], $isValidFetch["password"])) {
-                    $_SESSION["username"] = $_POST["username"];
-                    header("Location: home.php");
-                } else {
-                    writeMessage("Invalid username or password");
-                }
-            } else {
-                writeMessage("Invalid username or password");
-            }
-        } elseif (isset($_POST["register"])) {
-            $isTaken = mysqli_query($conn, "SELECT * FROM users WHERE username = '{$_POST["username"]}'");
-
-            if (mysqli_num_rows($isTaken) == 0) { // If the username was not found
-                // RegEx patterm
-                // - at least one uppercase letter
-                // - at least one lowercase letter
-                // - at least one number
-                // - no whitespace
-                // - at least 12 characters
-                $pattern = "/(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?!.*?[\s]).{12,}/";
-                if (preg_match($pattern, $_POST["password"])) {
-                    $salt = strval(rand(10000, 100000));
-                    // echo $salt . "<br>";
-
-                    $hashedPassword = password_hash($_POST["password"] . $salt, PASSWORD_DEFAULT);
-                    // echo $hashedPassword . "<br>";
-
-                    mysqli_query($conn, "INSERT INTO users (`username`, `password`, `salt`) VALUES ('{$_POST["username"]}', '{$hashedPassword}', '{$salt}');");
-                    writeMessage("Succesfully registered");
-                } else {
-                    writeMessage("Password not secure enough, it must contain <br>- at least 1 uppercase letter <br>- at least 1 lowercase letter <br>- at least 1 number <br>- at least 12 characters <br>- no whitespace <br>");
-                }
-            } else {
-                writeMessage("User with username {$_POST["username"]} already exists");
-            }
-        }
-    }
-
-    // When user is logged in, it redirects to home.php
-    if (!empty($_SESSION["username"])) {
-        header("Location: home.php");
-    }
-
-    mysqli_close($conn);
-?>

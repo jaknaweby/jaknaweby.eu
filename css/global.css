@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap');
+html { font-family: 'Lexend', sans-serif; }
+:root { font-size: 10px; }
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 7.5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #b7b7b7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #aaaaaa; 
+}
+
+/* Underlines */
+
+h2, h3, header li a {
+    position: relative;
+    width: fit-content;
+}
+
+h2::before, h3::before, header li a::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    height: 3px;
+}
+
+header li a::before {
+    height: 1px;
+    width: 100%;
+    background: #7A6DB1;
+    margin-top: 3px;
+    opacity: 0;
+    transition: opacity .25s;
+}
+
+h2::before {
+    width: 50%;
+    left: 25%;
+    background: linear-gradient(90deg, #00D1FF 0%, #7A6DB1 50%, #FF005C 100%);
+    margin-top: 5px;
+}
+
+h3::before {
+    width: 25%;
+    background: #7A6DB1;
+    margin-top: 5px;
+}
+
+/* Media queries */
+
+@media (max-width: 639px) {
+    #links {
+        position: absolute;
+        top: calc(100% + 2.5rem);
+        left: -2.5rem;
+        right: -2.5rem;
+    }
+}
+
+@media (min-width: 640px) {
+    header li a:hover::before {
+        opacity: 1;
+    }
+
+    #links {
+        display: flex;
+    }
+
+    :root {
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 768px) {
+    :root {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 1024px) {
+    :root {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1280px) {
+    :root {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 1536px) {
+    :root {
+        font-size: 16px;
+    }
+}
