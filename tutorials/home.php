@@ -66,5 +66,5 @@
         header("Location: login.php");
     }
 
-    $path = "../img"; include("../phpComponents/footer.php");
+    $path = ".."; include("../phpComponents/footer.php");
 ?>

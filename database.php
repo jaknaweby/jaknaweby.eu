@@ -29,6 +29,6 @@
     <title>Database uptime check</title>
 </head>
 <body class="flex flex-col min-h-screen">
-    <?php $path = "img"; include("phpComponents/footer.php"); ?>
+    <?php $path = "."; include("phpComponents/footer.php"); ?>
 </body>
 </html>

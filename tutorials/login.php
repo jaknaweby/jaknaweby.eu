@@ -128,5 +128,5 @@ if (!empty($_SESSION["username"])) {
 
 mysqli_close($conn);
 
-$path = "../img"; include("../phpComponents/footer.php");
+$path = ".."; include("../phpComponents/footer.php");
 ?>

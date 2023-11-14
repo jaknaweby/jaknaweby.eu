@@ -82,7 +82,7 @@
         </div>
     </main>
 
-    <?php $path = "./img"; include("phpComponents/footer.php"); ?>
+    <?php $path = "."; include("phpComponents/footer.php"); ?>
 
     <script src="script.js"></script>
 </body>
