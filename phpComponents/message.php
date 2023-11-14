@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="../css/global.css">
     </head>
     <body>
-        <div class="flex w-fit mx-auto mt-10">
+        <div class="flex w-fit mx-auto mt-10 font-extralight">
             <?php
                 if ($color === -1) {
                     echo "<span class='text-red-800'>{$message}</span>";
