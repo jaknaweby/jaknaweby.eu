@@ -24,10 +24,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="tailwind/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <title>Database uptime check</title>
 </head>
-<body>
-    
+<body class="flex flex-col min-h-screen">
+    <?php $path = "img"; include("phpComponents/footer.php"); ?>
 </body>
 </html>

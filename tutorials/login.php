@@ -12,48 +12,50 @@ function writeMessage(string $messageText, int $messageColor)
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@jaknaweby</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/global.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@jaknaweby</title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/global.css">
+    </head>
 
-<body>
-    <form method="post" class="flex flex-col items-center mt-10">
-        <div class="flex flex-col">
-            <label class="text-lg" for="username">Username</label>
-            <input class="border-2 rounded text-xl pl-1 placeholder:text-base font-light" type="text" name="username" placeholder="Enter a username" required>
-        </div>
+    <body class="flex flex-col min-h-screen">
+        <form method="post" class="flex flex-col items-center mt-10">
+            <div class="flex flex-col">
+                <label class="text-lg" for="username">Username</label>
+                <input class="border-2 rounded text-xl pl-1 placeholder:text-base font-light" type="text" name="username" placeholder="Enter a username" required>
+            </div>
 
-        <div class="flex flex-col mt-3">
-            <label class="text-lg" for="password">Password</label>
-            <input class="border-2 rounded text-xl pl-1 placeholder:text-base font-light" type="password" name="password" placeholder="Enter a password" required>
-        </div>
+            <div class="flex flex-col mt-3">
+                <label class="text-lg" for="password">Password</label>
+                <input class="border-2 rounded text-xl pl-1 placeholder:text-base font-light" type="password" name="password" placeholder="Enter a password" required>
+            </div>
 
-        <input class="bg-zinc-300 px-7 py-1 rounded text-xl mt-5 font-light" type="submit" name="login" value="Log in">
-    </form>
+            <input class="bg-zinc-300 px-7 py-1 rounded text-xl mt-5 font-light" type="submit" name="login" value="Log in">
+        </form>
 
-    <form method="post" class="flex flex-col items-center mt-10">
-        <div class="flex flex-col mt-3">
-            <label class="text-lg" for="username">Username</label>
-            <input class="border-2 rounded text-xl pl-1 placeholder:text-base font-light" type="text" name="username" placeholder="Enter a username" required>
-        </div>
+        <form method="post" class="flex flex-col items-center mt-10">
+            <div class="flex flex-col mt-3">
+                <label class="text-lg" for="username">Username</label>
+                <input class="border-2 rounded text-xl pl-1 placeholder:text-base font-light" type="text" name="username" placeholder="Enter a username" required>
+            </div>
 
-        <div class="flex flex-col mt-3">
-            <label class="text-lg" for="password">Password</label>
-            <input class="border-2 rounded text-xl pl-1 placeholder:text-base font-light" type="password" name="password" placeholder="Enter a password" required>
-        </div>
+            <div class="flex flex-col mt-3">
+                <label class="text-lg" for="password">Password</label>
+                <input class="border-2 rounded text-xl pl-1 placeholder:text-base font-light" type="password" name="password" placeholder="Enter a password" required>
+            </div>
 
-        <div class="flex flex-col mt-3">
-            <label class="text-lg" for="passwordConfirm">Confirm password</label>
-            <input class="border-2 rounded text-xl pl-1 placeholder:text-base font-light" type="password" name="passwordConfirm" placeholder="Enter a password" required>
-        </div>
+            <div class="flex flex-col mt-3">
+                <label class="text-lg" for="passwordConfirm">Confirm password</label>
+                <input class="border-2 rounded text-xl pl-1 placeholder:text-base font-light" type="password" name="passwordConfirm" placeholder="Enter a password" required>
+            </div>
 
-        <input class="bg-zinc-300 px-7 py-1 rounded text-xl mt-5 font-light" type="submit" name="register" value="Register">
-    </form>
-</body>
+            <input class="bg-zinc-300 px-7 py-1 rounded text-xl mt-5 font-light" type="submit" name="register" value="Register">
+        </form>
+
+        <?php  ?>
+    </body>
 
 </html>
 
@@ -125,4 +127,6 @@ if (!empty($_SESSION["username"])) {
 }
 
 mysqli_close($conn);
+
+$path = "../img"; include("../phpComponents/footer.php");
 ?>

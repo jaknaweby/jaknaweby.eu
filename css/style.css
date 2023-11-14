@@ -733,10 +733,6 @@ video {
   margin-top: 1.25rem;
 }
 
-.mt-4 {
-  margin-top: 1rem;
-}
-
 .box-border {
   box-sizing: border-box;
 }
@@ -845,6 +841,10 @@ video {
   height: 100vh;
 }
 
+.min-h-screen {
+  min-height: 100vh;
+}
+
 .w-1\/5 {
   width: 20%;
 }
@@ -864,6 +864,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-1\/2 {
+  width: 50%;
 }
 
 .flex-shrink {
@@ -1828,6 +1832,16 @@ video {
 .bg-zinc-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(212 212 216 / var(--tw-bg-opacity));
+}
+
+.bg-stone-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 244 / var(--tw-bg-opacity));
+}
+
+.bg-stone-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(120 113 108 / var(--tw-bg-opacity));
 }
 
 .decoration-slice {

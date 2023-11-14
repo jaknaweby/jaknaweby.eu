@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/global.css">
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
     <div class="flex flex-col items-center mt-10">
         <?php
             if (isset($_SESSION["username"])) {
@@ -65,4 +65,6 @@
     if (empty($_SESSION["username"])) {
         header("Location: login.php");
     }
+
+    $path = "../img"; include("../phpComponents/footer.php");
 ?>

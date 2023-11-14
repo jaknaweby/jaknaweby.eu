@@ -17,7 +17,7 @@
             <ul id="links" class="font-extralight text-xl hidden justify-between flex-col bg-stone-950 sm:flex-row sm:w-1/2 sm:bg-transparent">
                 <li class="pl-10 py-7 border-t sm:p-0 sm:border-0"><a href="#socials">Sociální sítě</a></li>
                 <li class="pl-10 py-7 border-y sm:p-0 sm:border-0"><a href="#">Mám zájem o web</a></li>
-                <li class="pl-10 py-7 border-b sm:p-0 sm:border-0"><a href="#">Tutorialy</a></li>
+                <li class="pl-10 py-7 border-b sm:p-0 sm:border-0"><a href="tutorials/login.php">Tutorialy</a></li>
             </ul>
             <img src="./img/hamburger.png" class="sm:hidden w-16" id="hamburger" alt="">
         </nav>
@@ -82,15 +82,7 @@
         </div>
     </main>
 
-    <footer class="text-white bg-stone-950 py-16 mt-36 px-10 sm:px-14 md:px-20 lg:px-24 xl:px-28 2xl:px-32">
-        <ul class="flex justify-center mx-auto mb-7">
-            <li class="w-16 mr-3"><a href="https://www.instagram.com/jaknaweby/"><img src="./img/instagram_logo.png" alt="instagram logo"></a></li>
-            <li class="w-16 mr-3"><a href="https://dsc.gg/jaknaweby"><img src="./img/discord_logo.png" alt="discord logo"></a></li>
-            <li class="w-16 mr-3"><a href="https://www.youtube.com/jaknaweby"><img src="./img/youtube_logo.png" alt="youtube logo"></a></li>
-            <li class="w-16"><a href="https://tiktok.com/@jaknaweby"><img src="./img/tiktok_logo.png" alt="tiktok logo"></a></li>
-        </ul>
-        <p class="font-extralight text-center text-xl">© 2023 @jaknaweby</p>
-    </footer>
+    <?php $path = "./img"; include("phpComponents/footer.php"); ?>
 
     <script src="script.js"></script>
 </body>
