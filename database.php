@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="icon" type="image/x-icon" href="img/jaknaweby_logo.png">
+    <title>Database uptime check</title>
+</head>
+<body class="flex flex-col min-h-screen">
+</body>
+</html>
+
 <?php
     $conn = "";
 
@@ -17,18 +31,6 @@
     } catch(mysqli_sql_exception) {
         echo "Failed to connect <br>";
     }
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/global.css">
-    <title>Database uptime check</title>
-</head>
-<body class="flex flex-col min-h-screen">
-    <?php $path = "."; include("phpComponents/footer.php"); ?>
-</body>
-</html>
+    $path = "."; include("phpComponents/footer.php");
+?>

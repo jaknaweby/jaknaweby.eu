@@ -18,6 +18,7 @@ function writeMessage(string $messageText, int $messageColor)
         <title>@jaknaweby</title>
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/global.css">
+        <link rel="icon" type="image/x-icon" href="../img/jaknaweby_logo.png">
     </head>
 
     <body class="flex flex-col min-h-screen">
