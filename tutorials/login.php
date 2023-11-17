@@ -54,8 +54,6 @@ function writeMessage(string $messageText, int $messageColor)
 
             <input class="bg-zinc-300 px-7 py-1 rounded text-xl mt-5 font-light" type="submit" name="register" value="Register">
         </form>
-
-        <?php  ?>
     </body>
 
 </html>
