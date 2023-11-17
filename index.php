@@ -18,7 +18,7 @@
             <ul id="links" class="font-extralight text-xl hidden justify-between flex-col bg-stone-950 sm:flex-row sm:w-1/2 sm:bg-transparent">
                 <li class="pl-10 py-7 border-t sm:p-0 sm:border-0"><a href="#socials">Sociální sítě</a></li>
                 <li class="pl-10 py-7 border-y sm:p-0 sm:border-0"><a href="#">Mám zájem o web</a></li>
-                <li class="pl-10 py-7 border-b sm:p-0 sm:border-0"><a href="tutorials/login.php">Tutorialy</a></li>
+                <li class="pl-10 py-7 border-b sm:p-0 sm:border-0"><a href="tutorials">Tutorialy</a></li>
             </ul>
             <img src="./img/hamburger.png" class="sm:hidden w-16" id="hamburger" alt="">
         </nav>
