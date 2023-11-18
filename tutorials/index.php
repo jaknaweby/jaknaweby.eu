@@ -10,5 +10,7 @@
 </head>
 <body>
     <?php $path = ".."; $pageType = "index"; include("../phpComponents/profileHeader.php"); ?>
+
+    <?php $path = ".."; include("../phpComponents/footer.php"); ?>
 </body>
 </html>

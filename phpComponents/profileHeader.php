@@ -10,25 +10,25 @@
         </ul>
 
         <div class="absolute top-0 right-0 flex h-full">
-        <?php
-                session_start();
+            <?php
+            session_start();
 
-                try {
-                    $connection = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
-                    $queryResult = mysqli_query($connection, "SELECT isAdmin FROM users WHERE username = '{$_SESSION["username"]}'");
-        
-                    if (mysqli_num_rows($queryResult) > 0) {
-                        $fetchedResult = mysqli_fetch_row($queryResult);
-                        
-                        if ($fetchedResult[0] == 1) {
-                            echo "<a href=\"article.php\" class=\"h-full px-6 flex items-center bg-zinc-900";
-                            if ($pageType != "article") {
-                                echo "/20";
-                            }
-                            echo " hover:bg-zinc-900\"><img src=\"{$path}/img/article.png\" alt=\"article icon\" class=\"h-1/2\"></a>";
+            try {
+                $connection = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
+                $queryResult = mysqli_query($connection, "SELECT isAdmin FROM users WHERE username = '{$_SESSION["username"]}'");
+
+                if (mysqli_num_rows($queryResult) > 0) {
+                    $fetchedResult = mysqli_fetch_row($queryResult);
+
+                    if ($fetchedResult[0] == 1) {
+                        echo "<a href=\"article.php\" class=\"h-full px-6 flex items-center bg-zinc-900";
+                        if ($pageType != "article") {
+                            echo "/20";
                         }
+                        echo " hover:bg-zinc-900\"><img src=\"{$path}/img/article.png\" alt=\"article icon\" class=\"h-1/2\"></a>";
                     }
-                } catch (Exception $e) {}
+                }
+            } catch (Exception $e) {}
             ?>
 
             <a href="login.php" class="h-full px-6 flex items-center bg-zinc-900<?php if ($pageType != "profile") { echo "/20"; } ?> hover:bg-zinc-900"><img src="<?php echo $path ?>/img/user.png" alt="user icon" class="h-1/2"></a>

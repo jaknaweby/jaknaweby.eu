@@ -68,3 +68,11 @@ html { font-family: 'Lexend', sans-serif; }
         font-size: 16px;
     }
 }
+
+/* Body settings - footer push */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}

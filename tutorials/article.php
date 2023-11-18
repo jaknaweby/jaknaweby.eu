@@ -41,7 +41,7 @@
     <link rel="icon" type="image/x-icon" href="../img/jaknaweby_logo.png">
 </head>
 
-<body class="flex flex-col min-h-screen">
+<body>
     <?php $path = ".."; $pageType = "article"; include("../phpComponents/profileHeader.php"); ?>
 
     <form method="post" class="flex flex-col items-center mt-10 text-lg">
@@ -135,7 +135,7 @@ if (isset($_POST["submit"])) {
     <link rel=\"icon\" type=\"image/x-icon\" href=\"../../img/jaknaweby_logo.png\">
 </head>
         
-<body class=\"flex flex-col min-h-screen\">
+<body>
     <?php include(\"../../phpComponents/header.php\"); ?>
         
     {$_POST["content"]}

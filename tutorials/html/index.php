@@ -17,7 +17,7 @@
     <link rel="icon" type="image/x-icon" href="../../img/jaknaweby_logo.png">
 </head>
 
-<body class="flex flex-col min-h-screen">
+<body>
     <?php
     include("../../phpComponents/header.php");
     include("../../phpComponents/footer.php");

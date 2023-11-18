@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/indexHeader.css">
     <link rel="icon" type="image/x-icon" href="img/jaknaweby_logo.png">
 </head>
-<body class="scrollbar">
+<body>
     <header
     style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), linear-gradient(rgba(0, 48, 75, 0.5), rgba(76, 0, 5, 0.5)), url('img/code_background.png');"
     class="w-full h-screen bg-cover bg-fixed text-white relative    px-10 sm:px-14 md:px-20 lg:px-24 xl:px-28 2xl:px-32">
