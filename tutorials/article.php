@@ -3,6 +3,23 @@
 
     if (empty($_SESSION["username"])) {
         header("Location: login.php");
+    } else {
+        try {
+            $connection = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
+            $queryResult = mysqli_query($connection, "SELECT isAdmin FROM users WHERE username = '{$_SESSION["username"]}'");
+
+            if (mysqli_num_rows($queryResult) > 0) {
+                $fetchedResult = mysqli_fetch_row($queryResult);
+                
+                if ($fetchedResult[0] != 1) {
+                    header("Location: home.php");
+                }
+            } else {
+                header("Location: home.php");
+            }
+        } catch (Exception $e) {
+            header("Location: home.php");
+        }
     }
 
     function writeMessage(string $messageText, int $messageColor) {
@@ -25,6 +42,8 @@
 </head>
 
 <body class="flex flex-col min-h-screen">
+    <?php $path = ".."; $pageType = "article"; include("../phpComponents/profileHeader.php"); ?>
+
     <form method="post" class="flex flex-col items-center mt-10 text-lg">
         <div class="flex">
             <div class="mr-5">

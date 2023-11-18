@@ -13,12 +13,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Homepage - <?php echo $_SESSION["username"]; ?></title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/global.css">
     <link rel="icon" type="image/x-icon" href="../img/jaknaweby_logo.png">
 </head>
 <body class="flex flex-col min-h-screen">
+    <?php $path = ".."; $pageType = "profile"; include("../phpComponents/profileHeader.php"); ?>
+
     <div class="flex flex-col items-center mt-10">
         <?php
             if (isset($_SESSION["username"])) {

@@ -6,14 +6,9 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/global.css">
     <title>@jaknaweby</title>
+    <link rel="icon" type="image/x-icon" href="../img/jaknaweby_logo.png">
 </head>
 <body>
-    <ul>
-        <li><a href="html">HTML</a></li>
-        <li><a href="css">CSS</a></li>
-        <li><a href="javascript">JavaScript</a></li>
-        <li><a href="php">PHP</a></li>
-        <li><a href="sql">SQL</a></li>
-    </ul>
+    <?php $path = ".."; $pageType = "index"; include("../phpComponents/profileHeader.php"); ?>
 </body>
 </html>

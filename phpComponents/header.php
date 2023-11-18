@@ -6,77 +6,55 @@
             <li class="h-full"><a href="../" class="h-full px-6 flex items-center bg-zinc-900/20 hover:bg-zinc-900"><img src="<?php echo "{$path}"; ?>/img/home.png" alt="home icon" class="h-1/2"></a></li>
 
             <li class="h-full">
-                <a <?php if ($lang != "html") {
-                        echo "href='../html'";
-                    } else {
-                        echo "href='./'";
-                    } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "html") {
-                                                                                        echo "bg-red-600/10";
-                                                                                    } else {
-                                                                                        echo "bg-red-600";
-                                                                                    } ?> hover:bg-red-600">
+                <a <?php if ($lang != "html") { echo "href='../html'"; } else { echo "href='./'"; } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "html") { echo "bg-red-600/20"; } else { echo "bg-red-600"; } ?> hover:bg-red-600">
                     HTML
                 </a>
             </li>
 
             <li class="h-full">
-                <a <?php if ($lang != "css") {
-                        echo "href='../css'";
-                    } else {
-                        echo "href='../'";
-                    } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "css") {
-                                                                                        echo "bg-sky-600/10";
-                                                                                    } else {
-                                                                                        echo "bg-sky-600";
-                                                                                    } ?> hover:bg-sky-600">
+                <a <?php if ($lang != "css") { echo "href='../css'"; } else { echo "href='../'"; } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "css") { echo "bg-sky-600/20"; } else { echo "bg-sky-600"; } ?> hover:bg-sky-600">
                     CSS
                 </a>
             </li>
 
             <li class="h-full">
-                <a <?php if ($lang != "js") {
-                        echo "href='../javascript'";
-                    } else {
-                        echo "href='../'";
-                    } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "js") {
-                                                                                        echo "bg-yellow-600/10";
-                                                                                    } else {
-                                                                                        echo "bg-yellow-600";
-                                                                                    } ?> hover:bg-yellow-600">
+                <a <?php if ($lang != "js") { echo "href='../javascript'"; } else { echo "href='../'"; } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "js") { echo "bg-yellow-600/20"; } else { echo "bg-yellow-600"; } ?> hover:bg-yellow-600">
                     JavaScript
                 </a>
             </li>
 
             <li class="h-full">
-                <a <?php if ($lang != "php") {
-                        echo "href='../php'";
-                    } else {
-                        echo "href='../'";
-                    } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "php") {
-                                                                                        echo "bg-indigo-600/10";
-                                                                                    } else {
-                                                                                        echo "bg-indigo-600";
-                                                                                    } ?> hover:bg-indigo-600">
+                <a <?php if ($lang != "php") { echo "href='../php'"; } else { echo "href='../'"; } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "php") { echo "bg-indigo-600/20"; } else { echo "bg-indigo-600"; } ?> hover:bg-indigo-600">
                     PHP
                 </a>
             </li>
 
             <li class="h-full">
-                <a <?php if ($lang != "sql") {
-                        echo "href='../sql'";
-                    } else {
-                        echo "href='../'";
-                    } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "sql") {
-                                                                                        echo "bg-orange-600/10";
-                                                                                    } else {
-                                                                                        echo "bg-orange-600";
-                                                                                    } ?> hover:bg-orange-600">
+                <a <?php if ($lang != "sql") { echo "href='../sql'"; } else { echo "href='../'"; } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "sql") { echo "bg-orange-600/20"; } else { echo "bg-orange-600"; } ?> hover:bg-orange-600">
                     SQL
                 </a>
             </li>
         </ul>
 
-        <a href="../login.php" class="h-full px-6 flex items-center bg-zinc-900/20 hover:bg-zinc-900 absolute top-0 right-0"><img src="<?php echo "{$path}"; ?>/img/user.png" alt="user icon" class="h-1/2"></a>
+        <div class="absolute top-0 right-0 flex h-full">
+            <?php
+                session_start();
+
+                try {
+                    $connection = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
+                    $queryResult = mysqli_query($connection, "SELECT isAdmin FROM users WHERE username = '{$_SESSION["username"]}'");
+        
+                    if (mysqli_num_rows($queryResult) > 0) {
+                        $fetchedResult = mysqli_fetch_row($queryResult);
+                        
+                        if ($fetchedResult[0] == 1) {
+                            echo "<a href=\"../article.php\" class=\"h-full px-6 flex items-center bg-zinc-900/20 hover:bg-zinc-900\"><img src=\"{$path}/img/article.png\" alt=\"article icon\" class=\"h-1/2\"></a>";
+                        }
+                    }
+                } catch (Exception $e) {}
+            ?>
+            <a href="../login.php" class="h-full px-6 flex items-center bg-zinc-900/20 hover:bg-zinc-900"><img src="<?php echo "{$path}"; ?>/img/user.png" alt="user icon" class="h-1/2"></a>
+        </div>
     </nav>
     <div class="flex justify-center bg-<?php if ($lang === "html") { echo "red-600"; } else if ($lang === "css") { echo "sky-600"; } else if ($lang === "js") { echo "yellow-600"; } else if ($lang === "php") { echo "indigo-600"; } else if ($lang === "sql") { echo "orange-600"; } ?>">
         <h1 class="text-5xl font-bold text-white py-20"><?php echo "{$title}"; ?></h1>

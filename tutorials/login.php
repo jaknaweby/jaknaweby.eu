@@ -22,6 +22,8 @@ function writeMessage(string $messageText, int $messageColor)
     </head>
 
     <body class="flex flex-col min-h-screen">
+        <?php $path = ".."; $pageType = "profile"; include("../phpComponents/profileHeader.php"); ?>
+
         <form method="post" class="flex flex-col items-center mt-10">
             <div class="flex flex-col">
                 <label class="text-lg" for="username">Username</label>
