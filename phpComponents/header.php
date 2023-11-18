@@ -12,25 +12,25 @@
             </li>
 
             <li class="h-full">
-                <a <?php if ($lang != "css") { echo "href='../css'"; } else { echo "href='../'"; } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "css") { echo "bg-sky-600/20"; } else { echo "bg-sky-600"; } ?> hover:bg-sky-600">
+                <a <?php if ($lang != "css") { echo "href='../css'"; } else { echo "href='./'"; } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "css") { echo "bg-sky-600/20"; } else { echo "bg-sky-600"; } ?> hover:bg-sky-600">
                     CSS
                 </a>
             </li>
 
             <li class="h-full">
-                <a <?php if ($lang != "js") { echo "href='../javascript'"; } else { echo "href='../'"; } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "js") { echo "bg-yellow-600/20"; } else { echo "bg-yellow-600"; } ?> hover:bg-yellow-600">
+                <a <?php if ($lang != "js") { echo "href='../javascript'"; } else { echo "href='./'"; } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "js") { echo "bg-yellow-600/20"; } else { echo "bg-yellow-600"; } ?> hover:bg-yellow-600">
                     JavaScript
                 </a>
             </li>
 
             <li class="h-full">
-                <a <?php if ($lang != "php") { echo "href='../php'"; } else { echo "href='../'"; } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "php") { echo "bg-indigo-600/20"; } else { echo "bg-indigo-600"; } ?> hover:bg-indigo-600">
+                <a <?php if ($lang != "php") { echo "href='../php'"; } else { echo "href='./'"; } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "php") { echo "bg-indigo-600/20"; } else { echo "bg-indigo-600"; } ?> hover:bg-indigo-600">
                     PHP
                 </a>
             </li>
 
             <li class="h-full">
-                <a <?php if ($lang != "sql") { echo "href='../sql'"; } else { echo "href='../'"; } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "sql") { echo "bg-orange-600/20"; } else { echo "bg-orange-600"; } ?> hover:bg-orange-600">
+                <a <?php if ($lang != "sql") { echo "href='../sql'"; } else { echo "href='./'"; } ?> class="font-light py-auto h-full px-6 flex items-center <?php if ($lang != "sql") { echo "bg-orange-600/20"; } else { echo "bg-orange-600"; } ?> hover:bg-orange-600">
                     SQL
                 </a>
             </li>
