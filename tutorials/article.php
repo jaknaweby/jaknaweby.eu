@@ -97,11 +97,11 @@
 if (isset($_POST["submit"])) {
     try {
         $connection = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
-        $queryResult = mysqli_query($connection, "SELECT * FROM articles WHERE url = '{$_POST["url"]}' OR title = '{$_POST["title"]}'");
+        $queryResult = mysqli_query($connection, "SELECT * FROM articles_{$_POST["language"]} WHERE url = '{$_POST["url"]}' OR title = '{$_POST["title"]}'");
 
         // --------------------------------
         if (mysqli_num_rows($queryResult) === 0) {
-            mysqli_query($connection, "INSERT INTO articles (`title`, `url`, `language`) VALUES ('{$_POST["title"]}', '{$_POST["url"]}.php', '{$_POST["language"]}')");
+            mysqli_query($connection, "INSERT INTO articles_{$_POST["language"]} (`title`, `url`) VALUES ('{$_POST["title"]}', '{$_POST["url"]}.php')");
             
             $myfile = null;
             if ($_POST["language"] === "html") {
@@ -152,8 +152,8 @@ if (isset($_POST["submit"])) {
         }
 
         mysqli_close($connection);
-    } catch (mysqli_sql_exception) {
-        echo "Database error<br>";
+    } catch (Exception $e) {
+        echo $e;
     }
 }
 

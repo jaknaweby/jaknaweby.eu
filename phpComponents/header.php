@@ -78,13 +78,17 @@
         </h3>
         <ul class="w-full font-light">
             <?php
-            $connection = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
-            $articles = mysqli_query($connection, "SELECT title, url FROM articles WHERE language = '{$lang}'");
+            try {
+                $connection = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
+                $articles = mysqli_query($connection, "SELECT title, url FROM articles_{$lang}");
 
-            foreach (mysqli_fetch_all($articles) as $row) {
-                $itemTitle = $row[0];
-                $itemUrl = $row[1];
-                include("../../phpComponents/navItem.php");
+                foreach (mysqli_fetch_all($articles) as $row) {
+                    $itemTitle = $row[0];
+                    $itemUrl = $row[1];
+                    include("../../phpComponents/navItem.php");
+                }
+            } catch (Exception $e) {
+                echo $e;
             }
             ?>
         </ul>
