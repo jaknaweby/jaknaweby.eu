@@ -76,3 +76,9 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
+
+li.marker-dash::before {
+    content: "-";
+    margin-inline-end: 1ch;
+}
