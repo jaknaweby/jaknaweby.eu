@@ -1,7 +1,7 @@
 let hamburger = document.getElementById("hamburger");
 let hamburgerLogo = document.getElementById("hamburger-logo");
 let articles = document.getElementById("articles");
-let isOn = true;
+let isOn = false;
 
 hamburger.addEventListener("click", () => {
     if (isOn) {
