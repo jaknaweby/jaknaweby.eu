@@ -82,13 +82,47 @@
             <input class="border-2 rounded text-xl pl-1 placeholder:text-base font-light" type="text" name="url" placeholder="Enter a page url - file name" required>
         </div>
 
-        <div class="flex flex-col mt-3">
+        <!-- <div class="flex flex-col mt-3">
             <label for="content">Content</label>
             <textarea class="border-2 rounded pl-1 text-base placeholder:text-base font-light" name="content" id="content" cols="60" rows="10" placeholder="Enter the content of the page" required></textarea>
         </div>
 
-        <input class="bg-zinc-300 px-7 py-1 rounded text-xl mt-5 font-light" type="submit" name="submit" value="Add article">
+        <input class="bg-zinc-300 px-7 py-1 rounded text-xl mt-5 font-light" type="submit" name="submit" value="Add article"> -->
     </form>
+
+    <div class="w-11/12 m-auto mt-10">
+        <div class="text-2xl font-medium mb-5">Page structure - used components</div>
+        <!-- Components ui added by PHP -->
+        <?php
+        $itemIndex = 0;
+        $titleIndex = 0;
+
+        $sequence = ["title", "list"];
+        $title = ["title", "l-items"];
+
+        foreach ($sequence as $sequenceItem) {
+            echo "<div class=\"text-xl\">" . ucfirst($sequenceItem) . " component</div>";
+            
+            $currentItems;
+            switch ($sequenceItem) {
+                case "title":
+                    $currentItems = $title;
+                    break;
+            }
+
+            foreach ($currentItems as $componentItem) {
+                if (str_starts_with($componentItem, "l-")) {
+                    echo "<label class=\"font-light\">" . ucfirst(substr($componentItem, 2)) . " - is a list</label><br>";
+                    echo "<textarea name=\"\" id=\"\" cols=\"100\" rows=\"1\" class=\"border-2 rounded text-xl pl-1 placeholder:text-base font-light\"></textarea><br>";
+                } else {
+                    echo "<label class=\"font-light\">" . ucfirst($componentItem) . "</label><br>";
+                    echo "<input type=\"text\" class=\"border-2 rounded text-xl pl-1 placeholder:text-base font-light\"><br>";
+                }
+            }
+            
+        }
+        ?>
+    </div>
 </body>
 
 </html>
