@@ -30,7 +30,7 @@ INSERT INTO `articles_sql` (`id`, `title`, `url`) VALUES (NULL, 'Co je to SQL', 
 
 
 /* New articles table initialization */
-CREATE TABLE `jaknaweby.eu`.`articles` (`id` INT NOT NULL AUTO_INCREMENT , `filename` VARCHAR(255) NOT NULL , `title` VARCHAR(255) NOT NULL , `language` VARCHAR(4) NOT NULL , `published` BOOLEAN NOT NULL DEFAULT FALSE , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `jaknaweby.eu`.`articles` (`id` INT NOT NULL AUTO_INCREMENT , `pagename` VARCHAR(255) NOT NULL , `title` VARCHAR(255) NOT NULL , `language` VARCHAR(4) NOT NULL , `published` BOOLEAN NOT NULL DEFAULT FALSE , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 INSERT INTO `articles` (`title`, `filename`, `language`) VALUES ('Co je to HTML', 'index.php', 'html');
 INSERT INTO `articles` (`title`, `filename`, `language`) VALUES ('Co je to CSS', 'index.php', 'css');
 INSERT INTO `articles` (`title`, `filename`, `language`) VALUES ('Co je to JavaScript', 'index.php', 'jss');
