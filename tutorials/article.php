@@ -29,6 +29,25 @@
     }
 ?>
 
+<?php
+    if (isset($_POST["create"])) {
+        $connection = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
+        $result = mysqli_query($connection, "SELECT * FROM articles WHERE language = '{$_POST["language"]}' AND LOWER(title) = '" . strtolower(trim($_POST["title"])) . "' OR language = '{$_POST["language"]}' AND pagename = '" . strtolower(trim($_POST["pagename"])) . ".php'");
+        //$result = mysqli_fetch_all($result);
+
+        if (mysqli_num_rows($result) > 0) {
+            echo "This title / pagename is already in use";
+        } else {
+            mysqli_query($connection, "INSERT INTO articles (`title`, `pagename`, `language`) VALUES ('" . ucfirst(trim($_POST["title"])) . "', '" . strtolower(trim($_POST["pagename"])) . ".php', '{$_POST["language"]}')");
+        }
+    } else if (isset($_POST["remove"])) {
+        // Parse remove value
+        // Remove article based on parsed value
+    } else if (isset($_POST["edit"])) {
+        // Create some edit page...
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,67 +69,13 @@
         <input type="submit" name="remove" value="Remove" class="px-7 py-1 text-xl font-light rounded-lg <?php if (isset($_GET["remove"])) { echo "bg-green-300"; } else { echo "bg-red-300"; } ?>">
     </form> -->
 
-    <?php
-        if (isset($_GET["remove"]) || isset($_GET["edit"])) {
-            echo "To be added";
-        }
-    ?>
-
-    <!-- Create -->
-    <?php if (isset($_GET["create"]) && false) { ?>
-        <form method="post" class="flex flex-col items-center mt-10 text-lg">
-            <div class="flex">
-                <div class="mr-5">
-                    <input type="radio" name="language" id="html" value="html" required>
-                    <label for="html">HTML</label>
-                </div>
-
-                <div class="mr-5">
-                    <input type="radio" name="language" id="css" value="css">
-                    <label for="css">CSS</label>
-                </div>
-
-                <div class="mr-5">
-                    <input type="radio" name="language" id="js" value="js">
-                    <label for="js">JavaScript</label>
-                </div>
-
-                <div class="mr-5">
-                    <input type="radio" name="language" id="php" value="php">
-                    <label for="php">PHP</label>
-                </div>
-
-                <div>
-                    <input type="radio" name="language" id="sql" value="sql">
-                    <label for="sql">SQL</label>
-                </div>
-            </div>
-
-            <div class="flex flex-col mt-3">
-                <label for="title">Title</label>
-                <input class="border-2 rounded text-xl pl-1 placeholder:text-base font-light" type="text" name="title" placeholder="Enter a page title" required>
-            </div>
-
-            <div class="flex flex-col mt-3">
-                <label for="url">URL</label>
-                <input class="border-2 rounded text-xl pl-1 placeholder:text-base font-light" type="text" name="url" placeholder="Enter a page url - file name" required>
-            </div>
-
-            <!-- <div class="flex flex-col mt-3">
-                <label for="content">Content</label>
-                <textarea class="border-2 rounded pl-1 text-base placeholder:text-base font-light" name="content" id="content" cols="60" rows="10" placeholder="Enter the content of the page" required></textarea>
-            </div> -->
-
-            <input class="bg-zinc-300 px-7 py-1 rounded text-xl mt-5 font-light" type="submit" name="submit" value="Create article">
-        </form>
-    <?php } ?>
-
-    <h2 class="text-center text-3xl font-medium mt-16">Articles management</h2>
-    <form method="post" class="w-11/12 mx-auto mt-3 bg-zinc-200 text-lg text-center p-3 rounded-lg">
-        <table class="w-full rounded-lg font-light">
+    <h2 class="text-center text-3xl font-semibold mt-16">Content management</h2>
+    <table class="w-11/12 mx-auto mt-8 bg-zinc-200 text-lg text-center p-3 font-light">
+        <!-- Edit / remove a file -->
+        <form method="post">
             <tr class="bg-zinc-400/50">
                 <th class="w-4/12">Title</th>
-                <th class="w-3/12">Filename</th>
+                <th class="w-3/12">Pagename</th>
                 <th class="w-2/12">Language</th>
                 <th class="w-1/12">Published</th>
                 <th class="w-1/12"></th>
@@ -120,23 +85,47 @@
             <?php
                 $connection = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
                 
-                $articles = mysqli_query($connection, "SELECT title, filename, language, published FROM articles");
+                $articles = mysqli_query($connection, "SELECT title, pagename, language, published FROM articles");
                 $articles = mysqli_fetch_all($articles);
                 $articleIndex = 1;
             ?>
 
             <?php foreach ($articles as $article) { ?>
                 <tr <?php if ($articleIndex % 2 == 0) { echo "class=\"bg-zinc-300\""; } $articleIndex++; ?>>
-                <td><?php echo $article[0]; ?></td>
-                <td><?php echo $article[1]; ?></td>
-                <td><?php echo strtoupper($article[2]); ?></td>
-                <td><?php echo $article[3]; ?></td>
-                <td>Remove</td> <!-- Make a button to remove -->
-                <td>Edit</td> <!-- Make a button to edit -->
-            </tr>
+                    <td><?php echo $article[0]; ?></td> <!-- Title -->
+                    <td><?php echo substr($article[1], 0, strlen($article[1]) - 4); ?></td> <!-- Pagename -->
+                    <td><?php echo strtoupper($article[2]); ?></td> <!-- Language -->
+                    <td><?php echo $article[3]; ?></td> <!-- Published -->
+                    <td><input type="submit" value="Remove" name="<?php echo $article[2] . "/" . $article[1] ?>" class="h-full w-full hover:bg-zinc-400/25"></td> <!-- Make a button to remove -->
+                    <td><input type="submit" value="Edit" name="<?php echo $article[2] . "/" . $article[1] ?>" class="h-full w-full hover:bg-zinc-400/25"></td> <!-- Make a button to edit -->
+                </tr>
             <?php } ?>
-        </table>
-    </form>
+        </form>
+
+        <!-- Create a file -->
+        <form method="post">
+            <tr class="w-full <?php if ($articleIndex % 2 == 0) { echo "bg-zinc-300"; } $articleIndex++; ?>">
+                <td><input type="text" name="title" id="title" class="h-full w-full text-center bg-transparent" required autocomplete="off"></td> <!-- Title -->
+                <td><input type="text" name="pagename" id="pagename" class="h-full w-full text-center bg-transparent" required autocomplete="off"></td> <!-- Pagename -->
+                <td>
+                    <select name="language" id="language" class="h-full w-full text-center bg-transparent" required>
+                        <option disabled selected value>select a language</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="js">JavaScript</option>
+                        <option value="php">PHP</option>
+                        <option value="sql">SQL</option>
+                    </select>
+                </td> <!-- Language -->
+                <td>-</td>
+                <td>-</td>
+                <td><input type="submit" value="Create" name="create" class="h-full w-full hover:bg-zinc-400/25"></td>
+            </tr>
+        </form>
+    </table>
+    
+
+    
     
 </body>
 
