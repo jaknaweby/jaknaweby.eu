@@ -29,25 +29,6 @@
     }
 ?>
 
-<?php
-    if (isset($_POST["create"])) {
-        $connection = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
-        $result = mysqli_query($connection, "SELECT * FROM articles WHERE language = '{$_POST["language"]}' AND LOWER(title) = '" . strtolower(trim($_POST["title"])) . "' OR language = '{$_POST["language"]}' AND pagename = '" . strtolower(trim($_POST["pagename"])) . ".php'");
-        //$result = mysqli_fetch_all($result);
-
-        if (mysqli_num_rows($result) > 0) {
-            echo "This title / pagename is already in use";
-        } else {
-            mysqli_query($connection, "INSERT INTO articles (`title`, `pagename`, `language`) VALUES ('" . ucfirst(trim($_POST["title"])) . "', '" . strtolower(trim($_POST["pagename"])) . ".php', '{$_POST["language"]}')");
-        }
-    } else if (isset($_POST["remove"])) {
-        // Parse remove value
-        // Remove article based on parsed value
-    } else if (isset($_POST["edit"])) {
-        // Create some edit page...
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,11 +44,46 @@
 <body>
     <?php $path = ".."; $pageType = "article"; include("../phpComponents/profileHeader.php"); ?>
 
-    <!-- <form class="flex justify-center mt-10" method="get">
-        <input type="submit" name="create" value="Create" class="px-7 py-1 text-xl font-light mr-5 rounded-lg <?php if (isset($_GET["create"])) { echo "bg-green-300"; } else { echo "bg-red-300"; } ?>">
-        <input type="submit" name="edit" value="Edit" class="px-7 py-1 text-xl font-light mr-5 rounded-lg <?php if (isset($_GET["edit"])) { echo "bg-green-300"; } else { echo "bg-red-300"; } ?>">
-        <input type="submit" name="remove" value="Remove" class="px-7 py-1 text-xl font-light rounded-lg <?php if (isset($_GET["remove"])) { echo "bg-green-300"; } else { echo "bg-red-300"; } ?>">
-    </form> -->
+    <?php
+        $file;
+
+        try {
+            $connection = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
+
+            if (isset($_POST["create"])) {
+                $connection = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
+                $result = mysqli_query($connection, "SELECT * FROM articles WHERE language = '{$_POST["language"]}' AND LOWER(title) = '" . strtolower(trim($_POST["title"])) . "' OR language = '{$_POST["language"]}' AND pagename = '" . strtolower(trim($_POST["pagename"])) . ".php'");
+
+                if (mysqli_num_rows($result) > 0) {
+                    writeMessage("This title / pagename for this language is already in use", -1);
+                } else {
+                    mysqli_query($connection, "INSERT INTO articles (`title`, `pagename`, `language`) VALUES ('" . ucfirst(trim($_POST["title"])) . "', '" . strtolower(trim($_POST["pagename"])) . ".php', '{$_POST["language"]}')");
+                }
+            } else {
+                foreach ($_POST as $file => $action) {
+                    $file = explode("/", str_replace("_", ".", $file));
+
+                    $res = mysqli_query($connection, "SELECT * FROM articles WHERE language = '{$file[0]}' AND pagename = '{$file[1]}'");
+
+                    if (mysqli_num_rows($res) > 0) {
+                        if ($action == "Remove") {
+                            mysqli_query($connection, "DELETE FROM articles WHERE language = '{$file[0]}' AND pagename = '{$file[1]}'");
+                        } else if ($action == "Edit") {
+                            writeMessage("Edit will be added in the future", 0);
+
+
+                        }
+                    } else {
+                        writeMessage("File '{$file[0]}/{$file[1]}' not found", -1);
+                    }
+                }
+            }
+        } catch (Exception $e) {
+            writeMessage($e, -1);
+        }
+
+        
+    ?>
 
     <h2 class="text-center text-3xl font-semibold mt-16">Content management</h2>
     <table class="w-11/12 mx-auto mt-8 bg-zinc-200 text-lg text-center p-3 font-light">
@@ -82,6 +98,7 @@
                 <th class="w-1/12"></th>
             </tr>
 
+            <!-- Loads all articles from database -->
             <?php
                 $connection = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
                 
@@ -93,7 +110,7 @@
             <?php foreach ($articles as $article) { ?>
                 <tr <?php if ($articleIndex % 2 == 0) { echo "class=\"bg-zinc-300\""; } $articleIndex++; ?>>
                     <td><?php echo $article[0]; ?></td> <!-- Title -->
-                    <td><?php echo substr($article[1], 0, strlen($article[1]) - 4); ?></td> <!-- Pagename -->
+                    <td><?php echo substr($article[1], 0, -4); ?></td> <!-- Pagename -->
                     <td><?php echo strtoupper($article[2]); ?></td> <!-- Language -->
                     <td><?php echo $article[3]; ?></td> <!-- Published -->
                     <td><input type="submit" value="Remove" name="<?php echo $article[2] . "/" . $article[1] ?>" class="h-full w-full hover:bg-zinc-400/25"></td> <!-- Make a button to remove -->
@@ -105,10 +122,10 @@
         <!-- Create a file -->
         <form method="post">
             <tr class="w-full <?php if ($articleIndex % 2 == 0) { echo "bg-zinc-300"; } $articleIndex++; ?>">
-                <td><input type="text" name="title" id="title" class="h-full w-full text-center bg-transparent" required autocomplete="off"></td> <!-- Title -->
-                <td><input type="text" name="pagename" id="pagename" class="h-full w-full text-center bg-transparent" required autocomplete="off"></td> <!-- Pagename -->
+                <td><input type="text" name="title" class="h-full w-full text-center bg-transparent" required autocomplete="off"></td> <!-- Title -->
+                <td><input type="text" name="pagename" class="h-full w-full text-center bg-transparent" required autocomplete="off"></td> <!-- Pagename -->
                 <td>
-                    <select name="language" id="language" class="h-full w-full text-center bg-transparent" required>
+                    <select name="language" class="h-full w-full text-center bg-transparent" required>
                         <option disabled selected value>select a language</option>
                         <option value="html">HTML</option>
                         <option value="css">CSS</option>
@@ -122,11 +139,7 @@
                 <td><input type="submit" value="Create" name="create" class="h-full w-full hover:bg-zinc-400/25"></td>
             </tr>
         </form>
-    </table>
-    
-
-    
-    
+    </table>    
 </body>
 
 </html>
@@ -195,10 +208,6 @@ if (isset($_POST["submit"])) {
         echo $e;
     }
 } */
-
-if (isset($_GET["create"]) && isset($_POST["submit"])) {
-    echo "aaaa";
-}
 
 $path = ".."; include("../phpComponents/footer.php");
 ?>
