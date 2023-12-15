@@ -10,34 +10,34 @@
             <a class="h-full px-6 flex items-center bg-zinc-900/20 hover:bg-zinc-900 absolute top-0 left-0 cursor-pointer" id="hamburger"><img src="{{ asset('img/hamburger.png') }}" alt="hamburger icon" class="h-1/2" id="hamburger-logo"></a>
     
             <ul class="flex text-white items-center text-xl h-full">
-                <li class="h-full"><a href="../" class="h-full px-6 flex items-center bg-zinc-900/20 hover:bg-zinc-900"><img src="{{ asset('img/home.png') }}" alt="home icon" class="h-1/2"></a></li>
+                <li class="h-full"><a href="./" class="h-full px-6 flex items-center bg-zinc-900/20 hover:bg-zinc-900"><img src="{{ asset('img/home.png') }}" alt="home icon" class="h-1/2"></a></li>
     
                 <li class="h-full">
-                    <a @if($lang != "html") href='../html' @else href='./' @endif class="font-light py-auto h-full px-6 flex items-center @if($lang != "html") bg-red-600/20 hover:bg-red-600 @else bg-red-600 @endif">
+                    <a href="@if($isIndex == false && $lang == "html") . @elseif($lang != "html") html @endif" class="font-light py-auto h-full px-6 flex items-center @if($lang != "html") bg-red-600/20 hover:bg-red-600 @else bg-red-600 @endif">
                         HTML
                     </a>
                 </li>
     
                 <li class="h-full">
-                    <a @if($lang != "css") href='../html' @else href='./' @endif class="font-light py-auto h-full px-6 flex items-center @if($lang != "css") bg-sky-600/20 hover:bg-sky-600 @else bg-sky-600 @endif">
+                    <a href="@if($isIndex == false && $lang == "css") . @elseif($lang != "css") css @endif" class="font-light py-auto h-full px-6 flex items-center @if($lang != "css") bg-sky-600/20 hover:bg-sky-600 @else bg-sky-600 @endif">
                         CSS
                     </a>
                 </li>
     
                 <li class="h-full">
-                    <a @if($lang != "javascript") href='../html' @else href='./' @endif class="font-light py-auto h-full px-6 flex items-center @if($lang != "javascript") bg-yellow-600/20 hover:bg-yellow-600 @else bg-yellow-600 @endif">
+                    <a href="@if($isIndex == false && $lang == "javascript") . @elseif($lang != "javascript") javascript @endif" class="font-light py-auto h-full px-6 flex items-center @if($lang != "javascript") bg-yellow-600/20 hover:bg-yellow-600 @else bg-yellow-600 @endif">
                         JavaScript
                     </a>
                 </li>
     
                 <li class="h-full">
-                    <a @if($lang != "php") href='../html' @else href='./' @endif class="font-light py-auto h-full px-6 flex items-center @if($lang != "php") bg-indigo-600/20 hover:bg-indigo-600 @else bg-indigo-600 @endif">
+                    <a href="@if($isIndex == false && $lang == "php") . @elseif($lang != "php") php @endif" class="font-light py-auto h-full px-6 flex items-center @if($lang != "php") bg-indigo-600/20 hover:bg-indigo-600 @else bg-indigo-600 @endif">
                         PHP
                     </a>
                 </li>
     
                 <li class="h-full">
-                    <a @if($lang != "sql") href='../html' @else href='./' @endif class="font-light py-auto h-full px-6 flex items-center @if($lang != "sql") bg-orange-600/20 hover:bg-orange-600 @else bg-orange-600 @endif">
+                    <a href="@if($isIndex == false && $lang == "sql") . @elseif($lang != "sql") sql @endif" class="font-light py-auto h-full px-6 flex items-center @if($lang != "sql") bg-orange-600/20 hover:bg-orange-600 @else bg-orange-600 @endif">
                         SQL
                     </a>
                 </li>
@@ -60,7 +60,7 @@
                     //     }
                     // } catch (Exception $e) {}
                 ?>
-                <a href="../login.php" class="h-full px-6 flex items-center bg-zinc-900/20 hover:bg-zinc-900"><img src="{{ asset('img/user.png') }}" alt="user icon" class="h-1/2"></a>
+                <a href="@if($isIndex == false) ../login @else ../../login @endif" class="h-full px-6 flex items-center bg-zinc-900/20 hover:bg-zinc-900"><img src="{{ asset('img/user.png') }}" alt="user icon" class="h-1/2"></a>
             </div>
         </nav>
     

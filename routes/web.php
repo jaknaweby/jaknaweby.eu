@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('tutorials/{lang}/{article}', [PagesController::class, 'showArticle']);
+Route::get('tutorials/{lang}', [PagesController::class, 'showArticle']);
 
 Route::get('tutorials', function () {
     return "Tutorials main page";
