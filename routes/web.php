@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ArticlesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('tutorials/{lang}/{article}', [PagesController::class, 'showArticle']);
-Route::get('tutorials/{lang}', [PagesController::class, 'showArticle']);
+// Route::get('tutorials/{lang}/{article}', [PagesController::class, 'showArticle']);
+// Route::get('tutorials/{lang}', [PagesController::class, 'showArticle']);
 
-Route::get('tutorials', function () {
-    return "Tutorials main page";
-});
+// Route::get('tutorials', function () {
+//     return "Tutorials main page";
+// });
+
+Route::get('tutorials', [ArticlesController::class, 'index']);
+
+Route::get('tutorials/{lang}', [ArticlesController::class, 'show']);
+Route::get('tutorials/{lang}/{filename}', [ArticlesController::class, 'show']);
