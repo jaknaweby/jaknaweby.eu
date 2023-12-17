@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('title')
-    {{ ucfirst($article) }}
+    {{ ucfirst($article->title) }}
 @endsection
 
 @section('content')
@@ -13,6 +13,7 @@
                 <li class="h-full"><a href="./" class="h-full px-6 flex items-center bg-zinc-900/20 hover:bg-zinc-900"><img src="{{ asset('img/home.png') }}" alt="home icon" class="h-1/2"></a></li>
     
                 <li class="h-full">
+                    {{-- Fix linking --}}
                     <a href="@if($isIndex == false && $lang == "html") . @elseif($lang != "html") html @endif" class="font-light py-auto h-full px-6 flex items-center @if($lang != "html") bg-red-600/20 hover:bg-red-600 @else bg-red-600 @endif">
                         HTML
                     </a>
@@ -44,22 +45,7 @@
             </ul>
     
             <div class="absolute top-0 right-0 flex h-full">
-                <?php
-                    // session_start();
-    
-                    // try {
-                    //     $connection = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
-                    //     $queryResult = mysqli_query($connection, "SELECT isAdmin FROM users WHERE username = '{$_SESSION["username"]}'");
-            
-                    //     if (mysqli_num_rows($queryResult) > 0) {
-                    //         $fetchedResult = mysqli_fetch_row($queryResult);
-                            
-                    //         if ($fetchedResult[0] == 1) {
-                    //             echo "<a href=\"../article.php\" class=\"h-full px-6 flex items-center bg-zinc-900/20 hover:bg-zinc-900\"><img src=\"{$path}/img/article.png\" alt=\"article icon\" class=\"h-1/2\"></a>";
-                    //         }
-                    //     }
-                    // } catch (Exception $e) {}
-                ?>
+                {{-- Add -> Show article icon --}}
                 <a href="@if($isIndex == false) ../login @else ../../login @endif" class="h-full px-6 flex items-center bg-zinc-900/20 hover:bg-zinc-900"><img src="{{ asset('img/user.png') }}" alt="user icon" class="h-1/2"></a>
             </div>
         </nav>
@@ -79,26 +65,21 @@
                 @endif
             </h3>
             <ul class="w-full font-light">
-                <?php
-                // try {
-                //     $connection = mysqli_connect("localhost", "root", "", "jaknaweby.eu");
-                //     $articles = mysqli_query($connection, "SELECT title, url FROM articles_{$lang}");
-    
-                //     foreach (mysqli_fetch_all($articles) as $row) {
-                //         $itemTitle = $row[0];
-                //         $itemUrl = $row[1];
-                //         include("../../phpComponents/navItem.php");
-                //     }
-                // } catch (Exception $e) {
-                //     echo $e;
-                // }
-                ?>
+                @foreach($articles as $artic)
+                    {{-- Implement background color for all languages --}}
+                    <li class="w-full py-0.5 pl-3 @if($artic->title == $article->title) bg-red-500 @endif">{{ $artic->title }}</li>
+                @endforeach
             </ul>
         </nav>
     </header>
     
     <div class="flex justify-center @if($lang === "html") bg-red-600 @elseif ($lang === "css") bg-sky-600 @elseif ($lang === "javascript") bg-yellow-600 @elseif ($lang === "php") bg-indigo-600 @elseif ($lang === "sql") bg-orange-600 @endif">
-        <h1 class="text-5xl font-bold text-white py-20">{{ $article }}</h1>
+        <h1 class="text-5xl font-bold text-white py-20">{{ $article->title }}</h1>
+    </div>
+
+    <div>
+        {{-- Actual content --}}
+        {{ $article->content }}        
     </div>
 @endsection
 
