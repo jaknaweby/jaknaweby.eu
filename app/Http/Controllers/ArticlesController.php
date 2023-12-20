@@ -12,7 +12,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        return "ahoj";
+        return view('tutorial')->with('article', new Article());
     }
 
     /**
@@ -36,7 +36,7 @@ class ArticlesController extends Controller
      */
     public function show(string $lang, string $filename = NULL)
     {
-        if ($lang == "html" || $lang == "css" || $lang == "javascript" || $lang == "php" || $lang == "sql") {
+        if (in_array($lang, ["html", "css", "javascript", "php", "sql"])) {
             $articles = Article::where('language', $lang)->get();
             $article = Article::where('language', $lang)->where('filename', $filename)->first();
 
