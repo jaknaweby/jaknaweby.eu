@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     <link rel="icon" href="{{ asset('img/jaknaweby_logo.png') }}">
+    @yield('css')
     <title>@yield('title')</title>
 </head>
 <body>
