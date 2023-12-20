@@ -40,16 +40,10 @@ class ArticlesController extends Controller
             $articles = Article::where('language', $lang)->get();
             $article = Article::where('language', $lang)->where('filename', $filename)->first();
 
-            // if ($filename != '') {
-            //     return view('tutorialPage', ['lang' => $lang, 'articleTitle' => $filename, 'isIndex' => false, 'articles' => $articles]);
-            // } else {
-            //     return view('tutorialPage', ['lang' => $lang, 'articleTitle' => "Co je to " . strtoupper($lang), 'isIndex' => true, 'articles' => $articles]);
-            // }
-
             if ($article == NULL) {
                 return abort(404);
             } else {
-                return view('tutorialPage', ['lang' => $lang, 'articleTitle' => "Co je to " . strtoupper($lang), 'isIndex' => true, 'articles' => $articles, 'article' => $article]);
+                return view('tutorialPage', ['articles' => $articles, 'article' => $article]);
             }
         } else {
             return abort(404);
