@@ -1,3 +1,5 @@
+@php use Illuminate\Support\Facades\Auth; @endphp 
+
 <header class="sticky top-0">
     <nav class="w-full bg-stone-950 flex items-center justify-center h-12 relative">
         <ul class="flex text-white items-center text-xl h-full">
@@ -46,11 +48,39 @@
             </li>
 
             <div class="absolute top-0 right-0 flex h-full">
-                {{-- Add -> Show article icon --}}
-                <li>
-                    <a href="{{ route('login') }}" class="h-full px-6 flex items-center @if($article->language != "login") bg-neutral-800/30 hover:bg-neutral-800 @else bg-neutral-800 @endif">
-                        <img src="{{ asset('img/user.png') }}" alt="user icon" class="h-1/2">
-                    </a>
+                <li class="flex items-center mr-7">
+                    @if (Auth::check())
+                        <x-dropdown>
+                            <x-slot name="trigger">
+                                <button class="flex items-center hover:text-gray-100">
+                                    <span class="text-base font-light">{{ Auth::user()->name }}</span>
+                                    <svg class="fill-current h-4 w-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link>Edit articles</x-dropdown-link> {{-- Condition by admin --}}
+                                <x-dropdown-link :href="route('dashboard')">Dashboard</x-dropdown-link>
+                                <x-dropdown-link :href="route('profile.edit')">Profile</x-dropdown-link>
+
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    
+                                    <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                                        Log Out
+                                    </x-dropdown-link>
+                                </form>
+                            </x-slot>
+                        </x-dropdown>
+                    @else
+                        <div class="flex items-center hover:text-gray-100 text-base font-light">
+                            <a href="{{ route('login') }}">Log in</a>
+                            <span class="mx-2">/</span>
+                            <a href="{{ route('register') }}">Register</a>
+                        </div>
+                    @endif
                 </li>
             </div>
         </ul>
