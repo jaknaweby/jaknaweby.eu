@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     <link rel="icon" href="{{ asset('img/jaknaweby_logo.png') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @yield('css')
     <title>@yield('title')</title>
 </head>
@@ -21,7 +22,7 @@
             <li class="w-16 mr-3"><a href="https://www.youtube.com/jaknaweby"><img src="{{ asset('img/youtube_logo.png') }}" alt="youtube logo"></a></li>
             <li class="w-16"><a href="https://tiktok.com/@jaknaweby"><img src="{{ asset('img/tiktok_logo.png') }}" alt="tiktok logo"></a></li>
         </ul>
-        <p class="font-extralight text-center text-xl">© 2023 @jaknaweby</p>
+        <p class="font-extralight text-center text-xl">© 2024 @jaknaweby</p>
     </footer>
 
     @yield('script')
