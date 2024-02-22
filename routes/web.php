@@ -3,6 +3,7 @@
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ArticlesController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\IsUserAdmin;
 
 Route::get('tutorials/dashboard', function () {
     return view('dashboard');
@@ -17,6 +18,7 @@ Route::get('tutorials/dashboard', function () {
 
 // Loads auth routes sooner than the web ones
 require __DIR__.'/auth.php';
+require __DIR__.'/articles.php';
 
 
 Route::view('/', 'index')->name('index');
