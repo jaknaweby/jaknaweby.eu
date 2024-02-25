@@ -80,5 +80,14 @@
                 </td>
             </form>
         </tr>
+
     </table>
+    
+    @if ($errors->any())
+        <div class="bg-neutral-200 w-11/12 mx-auto mt-5 flex flex-col items-center rounded-lg p-5">
+            @foreach ($errors->all() as $error)
+                <p class="text-red-700 text-lg">{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
 @endsection
