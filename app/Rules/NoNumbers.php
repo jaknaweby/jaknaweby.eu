@@ -5,7 +5,7 @@ namespace App\Rules;
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 
-class UsernameValidation implements ValidationRule
+class NoNumbers implements ValidationRule
 {
     /**
      * Run the validation rule.
@@ -14,12 +14,8 @@ class UsernameValidation implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (str_contains($value, ' ')) {
-            $fail('The :attribute must not contain a space');
-        }
-
-        if (preg_match('/[^\w\s]/', $value)) {
-            $fail('The :attribute must not contain any special characters');
+        if (preg_match('~[0-9]+~', $value)) {
+            $fail('The :attribute field must not contain numbers');
         }
     }
 }
