@@ -105,11 +105,13 @@
             </h3>
             <ul class="w-full font-light">
                 @foreach($articles as $artic)
-                    <li class="w-full @if($artic->title == $article->title) text-white @if($artic->language == "html") bg-red-600 @elseif($artic->language == "css") bg-sky-600 @elseif($artic->language == "javascript") bg-yellow-600 @elseif($artic->language == "php") bg-indigo-600 @elseif($artic->language == "sql") bg-orange-600 @endif @else hover:bg-gray-300 @endif">
-                        <a href="{{ route('tutorials') }}/{{ $artic->language }}@if($artic->filename != NULL)/{{ $artic->filename }}@endif" class="w-full h-full inline-block py-0.5 pl-3">
-                            {{ $artic->title }}
-                        </a>
-                    </li>
+                    @if ((Auth::user() != NULL && Auth::user()->isAdmin ) || $artic->isPublished == 1)
+                        <li class="w-full @if($artic->title == $article->title) text-white @if($artic->language == "html") bg-red-600 @elseif($artic->language == "css") bg-sky-600 @elseif($artic->language == "javascript") bg-yellow-600 @elseif($artic->language == "php") bg-indigo-600 @elseif($artic->language == "sql") bg-orange-600 @endif @else hover:bg-gray-300 @endif">
+                            <a href="{{ route('tutorials') }}/{{ $artic->language }}@if($artic->filename != NULL)/{{ $artic->filename }}@endif" class="w-full h-full inline-block py-0.5 pl-3">
+                                {{ $artic->title }}
+                            </a>
+                        </li>
+                    @endif
                 @endforeach
             </ul>
         </nav>

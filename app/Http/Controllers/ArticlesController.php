@@ -34,13 +34,13 @@ class ArticlesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $lang, string $filename = NULL)
+    public function show(Request $request, string $lang, string $filename = NULL)
     {
         if (in_array($lang, ["html", "css", "javascript", "php", "sql"])) {
             $articles = Article::where('language', $lang)->get();
             $article = Article::where('language', $lang)->where('filename', $filename)->first();
 
-            if ($article == NULL) {
+            if ($article == NULL || ($article->isPublished == 0 && ($request->user() == NULL || $request->user()->isAdmin == 0))) {
                 return abort(404);
             } else {
                 return view('tutorialPage', ['articles' => $articles, 'article' => $article]);
