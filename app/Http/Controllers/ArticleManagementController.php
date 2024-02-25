@@ -21,8 +21,8 @@ class ArticleManagementController extends Controller
         $doesExist = Article::all()->where('language', $request->language)->where('filename', $request->sublink)->first();
         
         $request->validate([
-            'sublink' => [new Rules\Lowercase, new Rules\NoSpace, new Rules\NoSpecialCharacters, new Rules\NoNumbers],
-            'title' => ['string', new Rules\NoSpecialCharacters]
+            'title' => ['string', new Rules\NoSpecialCharacters],
+            'sublink' => [new Rules\Lowercase, new Rules\NoSpace, new Rules\OnlyLettersAndNumbersAndHyphen, new Rules\NoNumbers],
         ]);
 
         if ($doesExist != NULL)
@@ -49,7 +49,7 @@ class ArticleManagementController extends Controller
         }
 
         $request->validate([
-            'filename' => [new Rules\Lowercase, new Rules\NoSpace, new Rules\NoSpecialCharacters, new Rules\NoNumbers],
+            'filename' => [new Rules\Lowercase, new Rules\NoSpace, new Rules\OnlyLettersAndNumbersAndHyphen, new Rules\NoNumbers],
             'title' => ['string', new Rules\NoSpecialCharacters]
         ]);
 
