@@ -36,7 +36,7 @@ class ProfileController extends Controller
 
         if ($request->user()->username != $request->username) {
             $request->validate([
-                'username' => ['required', 'string', 'min:6', 'max:255', 'unique:'.User::class, new Rule\UsernameValidation]
+                'username' => ['required', 'string', 'min:6', 'max:255', 'unique:'.User::class, new Rule\NoSpace, new Rule\NoSpecialCharacters]
             ]);
         }
 
