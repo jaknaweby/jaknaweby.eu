@@ -5,7 +5,7 @@ namespace App\Rules;
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 
-class NoSpecialCharacters implements ValidationRule
+class OnlyLettersAndNumbersAndHyphen implements ValidationRule
 {
     /**
      * Run the validation rule.
@@ -14,8 +14,8 @@ class NoSpecialCharacters implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (preg_match('/[^\w\s\-áéíóúýěščřžďťňĺľäô]/iu', $value)) {
-            $fail('The :attribute must not contain any special characters');
+        if (preg_match('/[^\w\s-]/', $value)) {
+            $fail('The :attribute may contain only numbers and letters of english alphabet and hyphen (-)');
         }
     }
 }
