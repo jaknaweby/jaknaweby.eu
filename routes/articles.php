@@ -1,9 +1,18 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\ArticleManagementController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\IsUserAdmin;
 
 Route::middleware('tutorialsManagement')->group(function () {
+    Route::get('tutorials/management', [ArticleManagementController::class, 'index'])
+        ->name('management');
+    
+    Route::post('tutorials/management', [ArticleManagementController::class, 'addArticle'])
+        ->name('addArticle');
 
+    Route::put('tutorials/management', [ArticleManagementController::class, 'editArticle'])
+        ->name('editArticle');
+
+    Route::delete('tutorials/management', [ArticleManagementController::class, 'deleteArticle'])
+        ->name('deleteArticle');
 });
