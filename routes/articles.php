@@ -6,6 +6,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('tutorialsManagement')->group(function () {
     Route::get('tutorials/management', [ArticleManagementController::class, 'index'])
         ->name('management');
+
+    Route::get('tutorials/management/{id}', [ArticleManagementController::class, 'editPage'])
+        ->name('editPage');
+    
+    Route::get('tutorials/management/{id}/content', [ArticleManagementController::class, 'editContent'])
+        ->name('editContent');
     
     Route::post('tutorials/management', [ArticleManagementController::class, 'addArticle'])
         ->name('addArticle');
