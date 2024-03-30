@@ -36,10 +36,10 @@
                     </td>
                 </form>
 
-                <form method="get" action="{{ route('management', $article->id) }}">
+                <form action="{{ route('editPage', $article->id) }}">
                     @csrf
                     <td>
-                        <button value="{{ $article->id }}" type="submit" name="edit" class="h-full w-full hover:bg-zinc-400/25">Edit</button>
+                        <button type="submit" class="h-full w-full hover:bg-zinc-400/25">Edit</button>
                     </td>
                 </form>
             </tr>
