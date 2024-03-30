@@ -72,6 +72,7 @@ class DynamicElements extends Component
         $article = Article::all()->find($id);
         $article->content = json_encode($this->json);
         $article->save();
+        return redirect(route('editPage', ['id' => $id]));
     }
 
     public function load(int $id) {
