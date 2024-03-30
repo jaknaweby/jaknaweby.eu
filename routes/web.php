@@ -4,6 +4,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ArticlesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsUserAdmin;
+use App\Livewire\DynamicElements;
 
 Route::get('tutorials/dashboard', function () {
     return view('dashboard');

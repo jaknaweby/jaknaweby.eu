@@ -37,6 +37,8 @@
                 <x-input-error :messages="$errors->get('content')" class="mt-2" />
             </div>
 
+            @livewire('dynamic-elements')
+
             {{-- Filename --}}
             <div class="mt-5">
                 <x-input-label for="filename" :value="__('Filename')" />
