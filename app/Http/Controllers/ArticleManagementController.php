@@ -10,11 +10,16 @@ use Illuminate\Http\RedirectResponse;
 
 class ArticleManagementController extends Controller
 {
-    public function index(Request $request) {
-        if ($request->edit != NULL)
-            return view('articleEdit')->with('id', $request->edit);
-        else
-            return view('articlesDashboard');
+    public function index() {
+        return view('articlesDashboard');
+    }
+
+    public function editPage(int $id) {
+        return view('articleEdit')->with('id', $id);
+    }
+
+    public function editContent(int $id) {
+        return view('editContent')->with('id', $id);
     }
 
     public function addArticle(Request $request) {
@@ -61,7 +66,6 @@ class ArticleManagementController extends Controller
         } else {
             $article->title = $request->title;
             $article->filename = $request->filename;
-            $article->content = $request->content;
             $article->language = $request->language;
             
             if ($request->is_published == "on") {
