@@ -33,31 +33,11 @@
         </pre>
     @endif
 
-    <button type="button" wire:click="save({{ $id }})">Save article</button>
-
     {{-- Read from JSON --}}
     <hr>
-    <div class="w-11/12 mx-auto">
-        @foreach ($json->components as $component_id => $component)
-            @if ($component->shown == 0)
-                @continue
-            @endif
+    @if ($json != null)
+        @include('display-preview', ['content' => json_encode($json), 'id' => $id, 'showButton' => false])
+    @endif
 
-            @switch($component->type_id)
-                @case(1)
-                    <div class="mt-32">
-                        <h2 class="text-4xl font-medium mb-3 pb-2 border-b-2 border-red-500">{{ $component->content->title }}</h2>
-                        @foreach ($component->content->list->items as $item)
-                            <p class="font-light text-xl mb-2">{{ $item }}</p>
-                        @endforeach
-                    </div>
-                    @break
-                @case(2)
-                    
-                    @break
-                @default
-                    
-            @endswitch
-        @endforeach
-    </div>
+    <button type="button" wire:click="save({{ $id }})" wire:confirm="Are you sure you want to save the changes?">Save article</button>
 </div>
