@@ -46,3 +46,4 @@ jaknaweby.eu is a tutorial web educating about web development. It contains indi
 - [ ] Implement WYSIWYG > *month*
 - [ ] Add administration of users in interface > *week*
 - [ ] Add TryIt editor > *2 weeks*
+- [ ] Add dark mode > *week*
