@@ -40,6 +40,12 @@
         }
     } else {
         $content = json_decode($article->content);
+
+        if ($content == null) {
+            $content = new stdClass();
+            $content->id = 0;
+            $content->components = new stdClass();
+        }
     }
 @endphp
 

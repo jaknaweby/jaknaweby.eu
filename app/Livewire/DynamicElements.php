@@ -15,13 +15,13 @@ class DynamicElements extends Component
     public int $id;
 
     public function mount() {
+        $this->json = json_decode(\App\Models\Article::all()->find($this->id)->content);
         if ($this->json == NULL) {
             $this->json = new stdClass();
             $this->json->id = 0;
             $this->json->components = new stdClass();
         }
         $this->key = 0;
-        $this->json = json_decode(\App\Models\Article::all()->find($this->id)->content);
     }
 
     #[On('updateJSON')]
