@@ -6,10 +6,10 @@
 
 @section('content')
     @include('includes.navbar')
-
-    <div>
-        {{-- Actual content --}}
-        {{ $article->content }}        
+    
+    {{-- Actual content --}}
+    <div class="w-11/12 m-auto">
+        @livewire('display-preview', ['id' => $article->id, 'content' => null])
     </div>
 @endsection
 

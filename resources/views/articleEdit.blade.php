@@ -31,7 +31,15 @@
             </div>
             
             {{-- Content --}}
-            @include('display-preview', ['content' => $article->content, 'id' => $id, 'showButton' => true])
+            <div class="mt-5">
+                @livewire('display-preview', ['isPreview' => true, 'content' => $article->content, 'id' => $article->id]) {{-- Content preview --}}
+                <form action="{{ route('editContent', ['id' => $id]) }}">
+                    @csrf
+                    <x-secondary-button type="submit" class="mt-2 !block !bg-green-800 !text-white border-0 hover:!bg-green-900 focus:!outline-none focus:!ring-2 focus:!ring-green-500 focus:!ring-offset-2">
+                        Edit content
+                    </x-secondary-button>
+                </form>
+            </div>
 
             {{-- Filename --}}
             <div class="mt-5">

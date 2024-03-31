@@ -21,6 +21,7 @@ class DynamicElements extends Component
             $this->json->components = new stdClass();
         }
         $this->key = 0;
+        $this->json = json_decode(\App\Models\Article::all()->find($this->id)->content);
     }
 
     #[On('updateJSON')]
@@ -72,6 +73,10 @@ class DynamicElements extends Component
         $article = Article::all()->find($id);
         $article->content = json_encode($this->json);
         $article->save();
+        return redirect(route('editPage', ['id' => $id]));
+    }
+
+    public function redirectTo(int $id) {
         return redirect(route('editPage', ['id' => $id]));
     }
 
