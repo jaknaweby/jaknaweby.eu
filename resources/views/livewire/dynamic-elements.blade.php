@@ -19,8 +19,7 @@
             @switch($component->type_id)
                 @case(1)
                     <div class="mt-5">
-                        @livewire('heading', ['current_component' => $component, 'component_id' => $component_id, 'path' => $component_id], key($key))
-                        {{ $key }}
+                        @livewire('heading', ['current_component' => $component, 'component_id' => $component_id, 'path' => $component_id], key($key++))
                     </div>
                     @break
                 @case(2)
