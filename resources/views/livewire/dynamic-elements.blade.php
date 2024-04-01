@@ -5,7 +5,9 @@
 <div class="w-11/12 mx-auto mt-5">
     {{-- Write to JSON --}}
     <div class="mb-5">
-        <button type="button" wire:click="addElement(1)" class="bg-slate-200 px-6 py-1.5 font-normal rounded">Add image component</button>
+        <x-secondary-button type="button" wire:click="addElement(1)" class="mt-2 !bg-indigo-800 !text-white border-0 hover:!bg-indigo-900 focus:!outline-none focus:!ring-2 focus:!ring-indigo-500 focus:!ring-offset-2">
+            Add image component
+        </x-secondary-button>
     </div>
 
     @if ($json != NULL)
@@ -16,7 +18,10 @@
 
             @switch($component->type_id)
                 @case(1)
-                    @livewire('heading', ['current_component' => $component, 'component_id' => $component_id, 'path' => $component_id], key($key++))
+                    <div class="mt-5">
+                        @livewire('heading', ['current_component' => $component, 'component_id' => $component_id, 'path' => $component_id], key($key))
+                        {{ $key }}
+                    </div>
                     @break
                 @case(2)
                     @livewire('test', key($component_id))
@@ -26,7 +31,10 @@
                     @continue2
             @endswitch
 
-            <button type="button" wire:click="removeComponent({{ $component_id }})" class="bg-red-200 text-sm px-6 py-1.5 font-normal rounded">Remove</button>
+            <x-secondary-button wire:click="removeComponent({{ $component_id }})" class="mt-1 !bg-red-800 hover:!bg-red-900 !text-white border-0 focus:!ring-0 focus:!ring-offset-0">
+                Remove component
+            </x-secondary-button>
+            {{-- <button type="button" wire:click="removeComponent({{ $component_id }})" class="bg-red-200 text-sm px-6 py-1.5 font-normal rounded">Remove</button> --}}
         @endforeach
     @endif
 
