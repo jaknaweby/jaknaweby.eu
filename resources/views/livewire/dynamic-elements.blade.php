@@ -22,9 +22,6 @@
                         @livewire('heading', ['current_component' => $component, 'component_id' => $component_id, 'path' => $component_id], key($key++))
                     </div>
                     @break
-                @case(2)
-                    @livewire('test', key($component_id))
-                    @break
                 @default
                     <p>Invadit type ID</p>
                     @continue2
@@ -33,7 +30,6 @@
             <x-secondary-button wire:click="removeComponent({{ $component_id }})" class="mt-1 !bg-red-800 hover:!bg-red-900 !text-white border-0 focus:!ring-0 focus:!ring-offset-0">
                 Remove component
             </x-secondary-button>
-            {{-- <button type="button" wire:click="removeComponent({{ $component_id }})" class="bg-red-200 text-sm px-6 py-1.5 font-normal rounded">Remove</button> --}}
         @endforeach
     @endif
 
