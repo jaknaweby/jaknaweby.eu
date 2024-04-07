@@ -1,24 +1,51 @@
 # jaknaweby.eu
 
-## Frameworks instalation
+## Project setup
 
-### Tailwind
+Install
+- [xampp](https://www.apachefriends.org/download.html)
+- [npm](https://nodejs.org/en/download)
+- [php](https://www.php.net/manual/en/install.php)
 
-If you want to edit CSS using tailwind, install npm and run the code below in the root directory
+### Debian based linux distributions
 
-```shell
-npm install -D tailwindcss
-npx tailwindcss -i ./resources/css/app.css -o ./public/css/style.css --watch
+#### XAMPP setup
+
+- Downlodad latest version of xampp from [sourceforge.net](https://sourceforge.net/projects/xampp/files/).
+- Run `sudo path_to_xammp_installation_file` in terminal.
+- Run `MySQL database` and `Apache Web Server` in xampp. (if there are issues running Apache, try changing the port number from 80 to a different one)
+- Go to `localhost:[port_number]/phpmyadmin` and create a database called `jaknaweby`.
+
+Run `sudo nano /opt/lampp/etc/httpd.conf` and change the folowing config (approximately line 230)
+```conf
+DocumentRoot "/opt/lampp/htdocs"
+<Directory "/opt/lampp/htdocs">
+```
+to
+```conf
+DocumentRoot "[path_to_your_project]/jaknaweby.eu/public"
+<Directory "[path_to_your_project]/jaknaweby.eu/public">
 ```
 
-### Laravel
+Run the following bash script in terminal in your project's root directory.
+```bash
+sudo apt install npm -y
+npm install
+sudo apt install php -y
+sudo apt install composer -y
+sudo apt-get install php-dom
+composer install --ignore-platform-reqs
+sudo apt install php-mysql -y
+php artisan migrate
+npm install -D tailwindcss
+```
 
-To make the laravel work, install npm, php and run the code below in the root directory
+#### Tailwind
+
+If you want to edit CSS using tailwind, run the code below in the project's root directory
 
 ```shell
-npm install composer
-composer install
-php artisan migrate
+npx tailwindcss -i ./resources/css/app.css -o ./public/css/style.css --watch
 ```
 
 ## Framework analysis
