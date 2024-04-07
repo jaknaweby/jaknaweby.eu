@@ -15,8 +15,8 @@ Install
 - Run `sudo chmod 777 path_to_xammp_installation_file` and `sudo path_to_xammp_installation_file` in terminal.
 - Run `MySQL database` and `Apache Web Server` in xampp. (if there are issues running Apache, try changing the port number from 80 to a different one)
 - Go to `localhost:[port_number]/phpmyadmin` and create a database called `jaknaweby`.
-
-Run `sudo nano /opt/lampp/etc/httpd.conf` and change the following config (approximately line 230)
+- Run `chmod -R 777 /opt/lampp/htdocs` and copy the whole project to this directory.
+- Run `sudo nano /opt/lampp/etc/httpd.conf` and change the following config (approximately line 230)
 
 ```conf
 DocumentRoot "/opt/lampp/htdocs"
@@ -26,8 +26,8 @@ DocumentRoot "/opt/lampp/htdocs"
 to
 
 ```conf
-DocumentRoot "[path_to_your_project]/jaknaweby.eu/public"
-<Directory "[path_to_your_project]/jaknaweby.eu/public">
+DocumentRoot "/opt/lampp/htdocs/jaknaweby.eu/public"
+<Directory "/opt/lampp/htdocs/jaknaweby.eu/public">
 ```
 
 Run the following bash script in terminal in your project's root directory.
