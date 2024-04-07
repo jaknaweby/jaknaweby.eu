@@ -11,23 +11,27 @@ Install
 
 #### XAMPP setup
 
-- Downlodad latest version of xampp from [sourceforge.net](https://sourceforge.net/projects/xampp/files/).
-- Run `sudo path_to_xammp_installation_file` in terminal.
+- Download the latest version of xampp from [sourceforge.net](https://sourceforge.net/projects/xampp/files/).
+- Run `sudo chmod 777 path_to_xammp_installation_file` and `sudo path_to_xammp_installation_file` in terminal.
 - Run `MySQL database` and `Apache Web Server` in xampp. (if there are issues running Apache, try changing the port number from 80 to a different one)
 - Go to `localhost:[port_number]/phpmyadmin` and create a database called `jaknaweby`.
 
-Run `sudo nano /opt/lampp/etc/httpd.conf` and change the folowing config (approximately line 230)
+Run `sudo nano /opt/lampp/etc/httpd.conf` and change the following config (approximately line 230)
+
 ```conf
 DocumentRoot "/opt/lampp/htdocs"
 <Directory "/opt/lampp/htdocs">
 ```
+
 to
+
 ```conf
 DocumentRoot "[path_to_your_project]/jaknaweby.eu/public"
 <Directory "[path_to_your_project]/jaknaweby.eu/public">
 ```
 
 Run the following bash script in terminal in your project's root directory.
+
 ```bash
 sudo apt install npm -y
 npm install
@@ -38,6 +42,7 @@ composer install --ignore-platform-reqs
 sudo apt install php-mysql -y
 php artisan migrate
 npm install -D tailwindcss
+npm audit fix
 ```
 
 #### Tailwind
@@ -52,7 +57,7 @@ npx tailwindcss -i ./resources/css/app.css -o ./public/css/style.css --watch
 
 ### Anotation
 
-jaknaweby.eu is a tutorial web educating about web development. It contains individual articles about various compoínents of HTML, CSS, JavaScript, PHP and SQL. All the users with admin permissions can edit these articles within the application interface. Editing works on a WYSIWYG (what you see is what you get) basis - articles have various options of pre-created components, where you just insert content that then shows up in the article.
+jaknaweby.eu is a tutorial web educating about web development. It contains individual articles about various components of HTML, CSS, JavaScript, PHP and SQL. All the users with admin permissions can edit these articles within the application interface. Editing works on a WYSIWYG (what you see is what you get) basis - articles have various options of pre-created components, where you just insert content that then shows up in the article.
 
 ### Functions
 
