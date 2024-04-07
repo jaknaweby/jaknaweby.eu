@@ -30,6 +30,7 @@ DocumentRoot "/opt/lampp/htdocs/jaknaweby.eu/public"
 <Directory "/opt/lampp/htdocs/jaknaweby.eu/public">
 ```
 
+#### Dependencies setup
 Run the following bash script in terminal in your project's root directory.
 
 ```bash
