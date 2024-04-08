@@ -67,10 +67,31 @@
         @switch($component->type_id)
             @case(1)
                 <div class="mt-32">
+                    @php
+                        if ($component->content->list->name == "Ordered item" || $component->content->list->name == "Unordered item") {
+                            $element = "li";
+                        } else if ($component->content->list->name == "Paragraph") {
+                            $element = "p";
+                        }
+                    @endphp
+
                     <h2 class="text-4xl font-medium mb-3 pb-2 border-b-2 border-{{ $color }}-500">{{ $component->content->title }}</h2>
+                    
+                    @if ($component->content->list->name == "Ordered item")
+                        <ol class="list-decimal list-inside">
+                    @elseif ($component->content->list->name == "Unordered item")
+                        <ul class="list-disc list-inside">
+                    @endif
+
                     @foreach ($component->content->list->items as $item)
-                        <p class="font-light text-xl mb-2">{{ $item }}</p>
+                        <{{ $element }} class="font-light text-xl mb-2">{{ $item }}</{{ $element }}>
                     @endforeach
+
+                    @if ($component->content->list->name == "Ordered item")
+                        </ol>
+                    @elseif ($component->content->list->name == "Unordered item")
+                        </ul>
+                    @endif
                 </div>
                 @break
             @default

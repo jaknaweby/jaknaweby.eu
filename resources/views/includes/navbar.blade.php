@@ -1,6 +1,6 @@
 @php use Illuminate\Support\Facades\Auth; @endphp 
 
-<header class="sticky top-0">
+<header class="sticky top-0" style="z-index: 1000">
     <nav class="w-full bg-stone-950 flex items-center justify-center h-12 relative">
         <ul class="flex text-white items-center text-xl h-full">
             @if(in_array($article->language, ["html", "css", "javascript", "php", "sql"]))

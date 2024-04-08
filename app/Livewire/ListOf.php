@@ -41,7 +41,11 @@ class ListOf extends Component
     }
 
     public function mount() : void { // When the component is being initialized - constructor
-        $this->current_component->name = $this->name;
+        if ($this->current_component->name == null) {
+            $this->current_component->name = $this->name;
+        } else {
+            $this->name = $this->current_component->name;
+        }
     }
 
     public function render() {

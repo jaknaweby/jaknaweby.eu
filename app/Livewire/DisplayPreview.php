@@ -9,6 +9,7 @@ class DisplayPreview extends Component
     public int $id;
     public $content;
     public $isPreview;
+    public $element = "p";
 
     public function render()
     {

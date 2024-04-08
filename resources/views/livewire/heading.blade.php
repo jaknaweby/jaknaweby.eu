@@ -7,4 +7,8 @@
     <div class="ml-5 mt-3">
         @livewire('list-of', ['current_component' => $current_component->content->list, 'parent_path' => $path, 'name' => 'paragraph'])
     </div>
+
+    {{-- <pre>
+        {{ print_r($current_component) }}
+    </pre> --}}
 </div>

@@ -6,7 +6,11 @@
     {{-- Write to JSON --}}
     <div class="mb-5">
         <x-secondary-button type="button" wire:click="addElement(1)" class="mt-2 !bg-indigo-800 !text-white border-0 hover:!bg-indigo-900 focus:!outline-none focus:!ring-2 focus:!ring-indigo-500 focus:!ring-offset-2">
-            Add image component
+            Add title component
+        </x-secondary-button>
+
+        <x-secondary-button type="button" wire:click="addElement(2)" class="mt-2 !bg-indigo-800 !text-white border-0 hover:!bg-indigo-900 focus:!outline-none focus:!ring-2 focus:!ring-indigo-500 focus:!ring-offset-2">
+            Add subtitle component
         </x-secondary-button>
     </div>
 
@@ -16,16 +20,19 @@
                 @continue
             @endif
 
-            @switch($component->type_id)
-                @case(1)
-                    <div class="mt-5">
+            <div class="mt-5">
+                @switch($component->type_id)
+                    @case(1)
                         @livewire('heading', ['current_component' => $component, 'component_id' => $component_id, 'path' => $component_id], key($key++))
-                    </div>
-                    @break
-                @default
-                    <p>Invadit type ID</p>
-                    @continue2
-            @endswitch
+                        @break
+                    {{-- @case(2)
+                        @livewire('subheading', ['current_component' => $component, 'component_id' => $component_id, 'path' => $component_id], key($key++))
+                        @break --}}
+                    @default
+                        <p>Invalid type ID - {{ $component->type_id }}</p>
+                        @break
+                @endswitch
+            </div>
 
             <x-secondary-button wire:click="removeComponent({{ $component_id }})" class="mt-1 !bg-red-800 hover:!bg-red-900 !text-white border-0 focus:!ring-0 focus:!ring-offset-0">
                 Remove component
