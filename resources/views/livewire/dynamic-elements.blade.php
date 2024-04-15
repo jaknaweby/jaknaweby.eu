@@ -20,19 +20,22 @@
                 @continue
             @endif
 
-            <div class="mt-5">
+            <details class="mt-10" {{ isset($detailsOpen->{$component_id}) ? 'open' : '' }}>
+                <summary wire:click.prevent="toggleDetails({{ $component_id }})">{{ trim($component->content->title) == "" ?  "Component ID $component_id" : trim($component->content->title) }}</summary>
+
                 @switch($component->type_id)
                     @case(1)
+                    @case(2)
                         @livewire('heading', ['current_component' => $component, 'component_id' => $component_id, 'path' => $component_id], key($key++))
                         @break
-                    {{-- @case(2)
-                        @livewire('subheading', ['current_component' => $component, 'component_id' => $component_id, 'path' => $component_id], key($key++))
-                        @break --}}
+                    @case(3)
+                        @livewire('image', ['current_component' => $component, 'component_id' => $component_id, 'path' => $component_id], key($key++))
+                        @break
                     @default
                         <p>Invalid type ID - {{ $component->type_id }}</p>
                         @break
                 @endswitch
-            </div>
+            </details>
 
             <x-secondary-button wire:click="removeComponent({{ $component_id }})" class="mt-1 !bg-red-800 hover:!bg-red-900 !text-white border-0 focus:!ring-0 focus:!ring-offset-0">
                 Remove component

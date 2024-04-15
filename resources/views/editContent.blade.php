@@ -9,5 +9,5 @@
 @endsection
 
 @section('auth-content')
-    @livewire('dynamic-elements', ['id' => $id])
+    @livewire('dynamic-elements', ['id' => $id, 'detailsOpen' => new stdClass()])
 @endsection

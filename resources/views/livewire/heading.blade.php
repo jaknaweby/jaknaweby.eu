@@ -1,5 +1,5 @@
 <div class="mb-2">
-    <div class="{{ $component_id }}.paragraphs">
+    <div>
         <x-input-label for="{{ $component_id }}.title" value="Title" />
         <x-text-input type="text" id="{{ $component_id }}.title" wire:model.live="current_component.content.title" class="border-gray-300 block py-1.5 px-3.5 rounded w-full" />
     </div>

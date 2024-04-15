@@ -49,7 +49,7 @@
     }
 @endphp
 
-<div>
+<div class="pt-16">
     @if ($isPreview == true)
         @if ($anyComponents == true)
             <x-input-label :value="__('Content preview')" />
@@ -64,18 +64,18 @@
             @continue
         @endif
 
+        <div class="mt-10">
         @switch($component->type_id)
             @case(1)
-                <div class="mt-32">
                     @php
                         if ($component->content->list->name == "Ordered item" || $component->content->list->name == "Unordered item") {
                             $element = "li";
-                        } else if ($component->content->list->name == "Paragraph") {
+                        } else {
                             $element = "p";
                         }
                     @endphp
 
-                    <h2 class="text-4xl font-medium mb-3 pb-2 border-b-2 border-{{ $color }}-500">{{ $component->content->title }}</h2>
+                    <h2 class="text-3xl font-medium mb-3 pb-2 border-b-2 border-{{ $color }}-500">{{ $component->content->title }}</h2>
                     
                     @if ($component->content->list->name == "Ordered item")
                         <ol class="list-decimal list-inside">
@@ -84,7 +84,7 @@
                     @endif
 
                     @foreach ($component->content->list->items as $item)
-                        <{{ $element }} class="font-light text-xl mb-2">{{ $item }}</{{ $element }}>
+                        <{{ $element }} class="font-light mb-2">{{ $item }}</{{ $element }}>
                     @endforeach
 
                     @if ($component->content->list->name == "Ordered item")
@@ -92,10 +92,36 @@
                     @elseif ($component->content->list->name == "Unordered item")
                         </ul>
                     @endif
-                </div>
                 @break
-            @default
+            @case(2)
+                    @php
+                        if ($component->content->list->name == "Ordered item" || $component->content->list->name == "Unordered item") {
+                            $element = "li";
+                        } else {
+                            $element = "p";
+                        }
+                    @endphp
+
+                    <h3 class="text-2xl mb-3 pb-1 w-fit border-b border-{{ $color }}-500">{{ $component->content->title }}</h3>
+                    
+                    @if ($component->content->list->name == "Ordered item")
+                        <ol class="list-decimal list-inside">
+                    @elseif ($component->content->list->name == "Unordered item")
+                        <ul class="list-disc list-inside">
+                    @endif
+
+                    @foreach ($component->content->list->items as $item)
+                        <{{ $element }} class="font-light mb-2">{{ $item }}</{{ $element }}>
+                    @endforeach
+
+                    @if ($component->content->list->name == "Ordered item")
+                        </ol>
+                    @elseif ($component->content->list->name == "Unordered item")
+                        </ul>
+                    @endif
+                @break
         @endswitch
+        </div>
     @endforeach
     
     @if ($isPreview == true && $anyComponents == true)

@@ -13,8 +13,11 @@ class DynamicElements extends Component
     public int $key;
     public int $current_key = 0;
     public int $id;
+    public stdClass $detailsOpen;
 
     public function mount() {
+        $detailsOpen = new stdClass();
+
         $this->json = json_decode(\App\Models\Article::all()->find($this->id)->content);
         if ($this->json == NULL) {
             $this->json = new stdClass();
@@ -22,6 +25,19 @@ class DynamicElements extends Component
             $this->json->components = new stdClass();
         }
         $this->key = 0;
+    }
+
+    public function toggleDetails(int $id) {
+        if (!isset($this->detailsOpen)) {
+            $this->detailsOpen = new stdClass();
+        }
+
+        if (!isset($this->detailsOpen->{$id})) {
+            $this->detailsOpen->{$id} = true;
+        } else {
+            unset($this->detailsOpen->{$id});
+        }
+        // $this->detailsOpen->{0} = true;
     }
 
     #[On('updateJSON')]
@@ -40,6 +56,7 @@ class DynamicElements extends Component
 
         switch ($typeId) {
             case 1:
+            case 2:
                 $content->title = "";
 
                 $content->list = new stdClass();
@@ -47,9 +64,14 @@ class DynamicElements extends Component
                 $content->list->id = 0;
                 $content->list->items = new stdClass();
                 break;
-            case 2:
-                $content->test = "";
-                break;
+            // case 2:
+            //     $content->title = "";
+
+            //     $content->list = new stdClass();
+            //     $content->list->name = "";
+            //     $content->list->id = 0;
+            //     $content->list->items = new stdClass();
+            //     break;
             default:
                 unset($this->json->components->{$this->json->id});
                 $this->json->id--;
@@ -66,7 +88,9 @@ class DynamicElements extends Component
         }
 
         // unset($this->json->components->{$component_id});
-        $this->json->components->{$component_id}->shown = 0;
+        if (isset($this->json->components->{$component_id})) {
+            $this->json->components->{$component_id}->shown = 0;
+        }
     }
 
     public function save(int $id) {

@@ -8,7 +8,7 @@
     @include('includes.navbar')
     
     {{-- Actual content --}}
-    <div class="w-11/12 m-auto">
+    <div class="w-8/12 m-auto">
         @livewire('display-preview', ['id' => $article->id, 'content' => null])
     </div>
 @endsection
