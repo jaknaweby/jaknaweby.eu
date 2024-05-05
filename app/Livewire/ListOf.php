@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class ListOf extends Component
 {
@@ -34,6 +35,12 @@ class ListOf extends Component
     public function updated($property) : void {
         if (str_starts_with($property, 'current_component'))
             $this->updateParentJSON();
+    }
+
+    #[On('updateProperty.{parent_path}')]
+    public function updateProperty(string $id, string $content) {
+        $this->current_component->items->{$id} = $content;
+        $this->updateParentJSON();
     }
 
     public function updateParentJSON() {
