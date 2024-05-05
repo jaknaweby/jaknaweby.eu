@@ -76,7 +76,14 @@ jaknaweby.eu is a tutorial web educating about web development. It contains indi
 ### Milestones
 
 - [x] Add function for managing articles > *week*
-- [ ] Implement WYSIWYG > *month*
+- [x] Implement WYSIWYG > *month*
 - [ ] Add administration of users in interface > *week*
 - [ ] Add TryIt editor > *2 weeks*
 - [ ] Add dark mode > *week*
+
+### TODO
+
+- [ ] Allow numbers in usernames (only bugging on register)
+- [ ] Use HTML5 tags in WYSIWYG editor
+- [ ] Create custom 404 page
+- [ ] Create tutorials index page
