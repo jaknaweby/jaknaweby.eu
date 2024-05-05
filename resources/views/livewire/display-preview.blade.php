@@ -67,32 +67,6 @@
         <div class="mt-10">
         @switch($component->type_id)
             @case(1)
-                    @php
-                        if ($component->content->list->name == "Ordered item" || $component->content->list->name == "Unordered item") {
-                            $element = "li";
-                        } else {
-                            $element = "p";
-                        }
-                    @endphp
-
-                    <h2 class="text-3xl font-medium mb-3 pb-2 border-b-2 border-{{ $color }}-500">{{ $component->content->title }}</h2>
-                    
-                    @if ($component->content->list->name == "Ordered item")
-                        <ol class="list-decimal list-inside">
-                    @elseif ($component->content->list->name == "Unordered item")
-                        <ul class="list-disc list-inside">
-                    @endif
-
-                    @foreach ($component->content->list->items as $item)
-                        <{{ $element }} class="font-light mb-2">{{ $item }}</{{ $element }}>
-                    @endforeach
-
-                    @if ($component->content->list->name == "Ordered item")
-                        </ol>
-                    @elseif ($component->content->list->name == "Unordered item")
-                        </ul>
-                    @endif
-                @break
             @case(2)
                     @php
                         if ($component->content->list->name == "Ordered item" || $component->content->list->name == "Unordered item") {
@@ -102,7 +76,11 @@
                         }
                     @endphp
 
-                    <h3 class="text-2xl mb-3 pb-1 w-fit border-b border-{{ $color }}-500">{{ $component->content->title }}</h3>
+                    @if ($component->type_id == 1)
+                        <h2 class="text-3xl font-medium mb-3 pb-2 border-b-2 border-{{ $color }}-500">{{ $component->content->title }}</h2>
+                    @elseif ($component->type_id == 2)
+                        <h3 class="text-2xl mb-3 pb-1 w-fit border-b border-{{ $color }}-500">{{ $component->content->title }}</h3>
+                    @endif
                     
                     @if ($component->content->list->name == "Ordered item")
                         <ol class="list-decimal list-inside">
@@ -111,7 +89,7 @@
                     @endif
 
                     @foreach ($component->content->list->items as $item)
-                        <{{ $element }} class="font-light mb-2">{{ $item }}</{{ $element }}>
+                        <{{ $element }} class="font-light mb-2">{!! $item !!}</{{ $element }}>
                     @endforeach
 
                     @if ($component->content->list->name == "Ordered item")
