@@ -14,8 +14,8 @@
 <body>
     @yield('content')
 
-    <div style="margin-top: auto;"></div>
-    <footer class="text-white bg-stone-950 py-16 px-10 mt-36 sm:px-14 md:px-20 lg:px-24 xl:px-28 2xl:px-32">
+    <div style="margin-top: auto;" class="@yield('auth-margin')"></div>
+    <footer class="text-white bg-stone-950 py-16 px-10 mt-36 sm:px-14 md:px-20 lg:px-24 xl:px-28 2xl:px-32 @yield('auth-margin')">
         <ul class="flex justify-center mx-auto mb-7">
             <li class="w-16 mr-3"><a href="https://www.instagram.com/jaknaweby/"><img src="{{ asset('img/instagram_logo.png') }}" alt="instagram logo"></a></li>
             <li class="w-16 mr-3"><a href="https://dsc.gg/jaknaweby"><img src="{{ asset('img/discord_logo.png') }}" alt="discord logo"></a></li>

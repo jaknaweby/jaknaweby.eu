@@ -41,12 +41,12 @@ class ArticlesController extends Controller
             $article = Article::where('language', $lang)->where('filename', $filename)->first();
 
             if ($article == NULL || ($article->isPublished == 0 && ($request->user() == NULL || $request->user()->isAdmin == 0))) {
-                return abort(404);
+                return abort(404, 'tutorial');
             } else {
                 return view('tutorialPage', ['articles' => $articles, 'article' => $article]);
             }
         } else {
-            return abort(404);
+            return abort(404, 'tutorial');
         }
     }
 

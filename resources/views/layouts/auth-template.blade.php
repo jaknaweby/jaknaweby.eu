@@ -18,3 +18,7 @@
 @section('script')
     @yield('auth-script')
 @endsection
+
+@section('margin')
+    @yield('auth-margin')
+@endsection
