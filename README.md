@@ -62,7 +62,7 @@ jaknaweby.eu is a tutorial web educating about web development. It contains indi
 
 ### Functions
 
-- WYSISWG (What You See Is What You Get)
+- WYSISWYG (What You See Is What You Get)
 - TryIt editor
 - Login system
 - Articles editing
