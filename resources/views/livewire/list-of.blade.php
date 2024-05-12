@@ -47,8 +47,6 @@
 
     <script>
         function log(event, id) {
-            console.log(event);
-
             if (event.key == 'Enter' || event.type == 'click') {
                 Livewire.dispatch(`updateProperty.${id.split('.')[0]}`, { id: id.split('.')[2], content: document.getElementById(id).innerHTML });
             }

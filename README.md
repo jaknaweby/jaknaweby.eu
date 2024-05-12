@@ -84,6 +84,6 @@ jaknaweby.eu is a tutorial web educating about web development. It contains indi
 ### TODO
 
 - [x] Allow numbers in usernames (only bugging on register)
-- [ ] Use HTML5 tags in WYSIWYG editor
+- [x] Use HTML5 tags in WYSIWYG editor
 - [ ] Create custom 404 page
 - [ ] Create tutorials index page

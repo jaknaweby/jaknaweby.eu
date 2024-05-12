@@ -1,9 +1,9 @@
 <div>
-    <x-secondary-button onclick="exec('b', '{{ $id }}')" class="mt-2 !bg-amber-500 hover:!bg-amber-600 !text-white border-0 focus:!ring-0 focus:!ring-offset-0">
+    <x-secondary-button onclick="exec('strong', '{{ $id }}')" class="mt-2 !bg-amber-500 hover:!bg-amber-600 !text-white border-0 focus:!ring-0 focus:!ring-offset-0">
         Bold
     </x-secondary-button>
 
-    <x-secondary-button onclick="exec('i', '{{ $id }}')" class="mt-2 !bg-amber-500 hover:!bg-amber-600 !text-white border-0 focus:!ring-0 focus:!ring-offset-0">
+    <x-secondary-button onclick="exec('em', '{{ $id }}')" class="mt-2 !bg-amber-500 hover:!bg-amber-600 !text-white border-0 focus:!ring-0 focus:!ring-offset-0">
         Italic
     </x-secondary-button>
 
