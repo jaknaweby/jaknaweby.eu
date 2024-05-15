@@ -2,7 +2,18 @@
     $article = App\Models\Article::all()->find($id);
 @endphp
 
-<div class="w-11/12 mx-auto mt-5">
+
+<div class="w-11/12 mx-auto mt-5">    
+    @if ($showError)
+        <div>
+            Cannot save the content - the HTML content seems to been updated using dev tools
+        </div>
+    @endif
+
+    {{-- <pre>
+        {{ $message }}
+    </pre> --}}
+
     {{-- Write to JSON --}}
     <div class="mb-5">
         <x-secondary-button type="button" wire:click="addElement(1)" class="mt-2 !bg-indigo-800 !text-white border-0 hover:!bg-indigo-900 focus:!outline-none focus:!ring-2 focus:!ring-indigo-500 focus:!ring-offset-2">
