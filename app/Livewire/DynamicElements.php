@@ -99,7 +99,7 @@ class DynamicElements extends Component
     public function save(int $id) {
         $article = Article::all()->find($id);
 
-        if ($this->validate_json($this->json) == true || true) { // ...
+        if ($this->validate_json($this->json) == true) { // ...
             $article->content = json_encode($this->json);
             $article->save();
             return redirect(route('editPage', ['id' => $id]));
@@ -108,7 +108,6 @@ class DynamicElements extends Component
         }
     }
 
-    // Is not working properly
     public function validate_json(object $validated_json) {
         $this->message = '';
         foreach ($this->json->components as $key => $component_value) {
@@ -132,26 +131,31 @@ class DynamicElements extends Component
                         if ($in_tag == false) {
                             return false; // Error - trying to enclose a tag, while there is no opened
                         } else {
-                            // check whether name is allowed
+                            // Checks whether tag name is allowed
                             if (in_array($tag_name, $allowed_tags) || in_array('/' . $tag_name, $allowed_tags)) {
                                 if (str_starts_with($tag_name, '/')) {
-                                    array_splice($current_tags, array_search($tag_name, $current_tags), 1);
+                                    array_splice($current_tags, array_search(substr($tag_name, 1), $current_tags), 1);
                                 } else {
                                     array_push($current_tags, $tag_name);
                                 }
                                 $tag_name = "";
+                                $in_tag = false;
                             } else {
                                 return false; // Error - the tag name is not allowed
                             }
                         }
+                    } else if ($in_tag == true) {
+                        $tag_name .= $value[$i];
                     }
                 }
-
-                $this->message .= $value . "\n";
             }
         }
 
-        return true;
+        if (count($current_tags) == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function redirectTo(int $id) {

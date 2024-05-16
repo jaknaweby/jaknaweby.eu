@@ -10,10 +10,6 @@
         </div>
     @endif
 
-    {{-- <pre>
-        {{ $message }}
-    </pre> --}}
-
     {{-- Write to JSON --}}
     <div class="mb-5">
         <x-secondary-button type="button" wire:click="addElement(1)" class="mt-2 !bg-indigo-800 !text-white border-0 hover:!bg-indigo-900 focus:!outline-none focus:!ring-2 focus:!ring-indigo-500 focus:!ring-offset-2">
