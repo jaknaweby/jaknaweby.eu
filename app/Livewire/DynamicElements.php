@@ -108,7 +108,7 @@ class DynamicElements extends Component
         }
     }
 
-    public function validate_json(object $validated_json) {
+    public function validate_json() {
         $this->message = '';
         foreach ($this->json->components as $key => $component_value) {
             if ($component_value->shown == false) { continue; } // Skip removed components

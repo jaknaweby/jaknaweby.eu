@@ -88,4 +88,4 @@ jaknaweby.eu is a tutorial web educating about web development. It contains indi
 - [x] Create custom 404 page
 - [x] Create tutorials index page
 - [ ] Add responsivity
-- [ ] Implement WYSIWYG editor output validation
+- [x] Implement WYSIWYG editor output validation
